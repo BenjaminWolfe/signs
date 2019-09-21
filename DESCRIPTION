@@ -1,13 +1,19 @@
 Package: signs
-Title: What the Package Does (One Line, Title Case)
+Title: Adds Proper Minus Signs
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Benjamin",
+           family = "Wolfe",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "benjamin.e.wolfe@gmail.com",
+           comment = c(ORCID = "0000-0002-4339-9328"))
+Description: Package replaces ASCII hyphen-minus signs
+    with typographically accurate, aesthetically satisfying minus glyphs
+    (Unicode 2212).
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    scales,
+    rlang
+RoxygenNote: 6.1.1
