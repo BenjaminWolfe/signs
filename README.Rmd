@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 # signs <a href='https://benjaminwolfe.github.io/signs/'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/BenjaminWolfe/signs.svg?branch=master)](https://travis-ci.org/BenjaminWolfe/signs)
 <!-- badges: end -->
 
 `signs` makes it easy to use typographically accurate minus signs

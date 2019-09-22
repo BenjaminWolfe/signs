@@ -4,7 +4,8 @@ signs <a href='https://benjaminwolfe.github.io/signs/'><img src='man/figures/log
 ========================================================================================================================
 
 <!-- badges: start -->
-<!-- badges: end -->
+[![Travis build status](https://travis-ci.org/BenjaminWolfe/signs.svg?branch=master)](https://travis-ci.org/BenjaminWolfe/signs) <!-- badges: end -->
+
 `signs` makes it easy to use typographically accurate minus signs in plots, markdown, dashboards, or other displays.
 
 Ask any typography nut, and they can walk you through the differences among 4 glyphs that look almost alike:
