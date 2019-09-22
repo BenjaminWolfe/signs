@@ -6,7 +6,7 @@
 \usage{
 signs(x, format = getOption("signs.format"),
   add_plusses = getOption("signs.add.plusses"),
-  strip_leading_zeros = getOption("signs.strip.leading.zeros"),
+  trim_leading_zeros = getOption("signs.trim.leading.zeros"),
   blank_at_zero = getOption("signs.blank.at.zero"), ...)
 }
 \arguments{
@@ -21,11 +21,11 @@ such as \code{scales::number},
 
 \item{add_plusses}{Logical. Should positive values have plus signs?}
 
-\item{strip_leading_zeros}{Logical. Should \code{signs} strip leading zeros
+\item{trim_leading_zeros}{Logical. Should \code{signs} trim leading zeros
 from values of \code{x} between -1 and 1?}
 
 \item{blank_at_zero}{Logical. Should \code{signs} return a blank string
-when \code{x} is exactly zero?}
+when \code{x} is zero?}
 
 \item{...}{Other arguments passed on to \code{format}.}
 }
@@ -33,28 +33,33 @@ when \code{x} is exactly zero?}
 A \code{UTF-8} character vector
 }
 \description{
-The true minus sign (Unicode 2212) -- neither an em dash, nor an en dash,
-nor the usual hyphen-minus -- is highly underrated.
+The true minus sign (Unicode 2212) --
+neither an em dash, nor an en dash, nor the usual hyphen-minus --
+is highly underrated.
 It makes everything look better!
 }
 \details{
-\code{add_plusses}, \code{strip_leading_zeros}, and \code{blank_at_zero}
+\code{add_plusses}, \code{trim_leading_zeros}, and \code{blank_at_zero}
 are offered for convenience.
 
 The options \code{signs.format}, \code{signs.add.plusses},
-\code{signs.strip.leading.zeros}, and \code{signs.blank.at.zero}
+\code{signs.trim.leading.zeros}, and \code{signs.blank.at.zero}
 are set when the package is loaded
 to \code{scales::number}, \code{FALSE}, \code{FALSE}, and \code{FALSE},
 respectively.
 If the package is not loaded and the these options are not otherwise set,
 \code{signs} will use those defaults.
+
+\code{blank_at_zero} is applied \emph{after} \code{format};
+that is, if it is \code{TRUE} and you've specified an accuracy of \code{0.1},
+\code{-0.04} will show as blank.
 }
 \examples{
 x <- seq(-5, 5)
 scales::number(x)
 signs(x)
-signs(x, format = scales::percent, scale = .01)
+signs(x, format = scales::percent, scale = 1, accuracy = 1)
 signs(x, add_plusses = TRUE)
 signs(x, add_plusses = TRUE, blank_at_zero = TRUE)
-signs(x, strip_leading_zeros = TRUE, scale = .1, accuracy = .1)
+signs(x, trim_leading_zeros = TRUE, scale = .1, accuracy = .1)
 }

@@ -8,7 +8,7 @@ Authors@R:
            email = "benjamin.e.wolfe@gmail.com",
            comment = c(ORCID = "0000-0002-4339-9328"))
 Description: Package replaces ASCII hyphen-minus signs
-    with typographically accurate, aesthetically satisfying minus glyphs
+    with typographically accurate, aesthetically pleasing minus glyphs
     (Unicode 2212).
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -17,3 +17,6 @@ Imports:
     scales,
     rlang
 RoxygenNote: 6.1.1
+Suggests: 
+    ggplot2,
+    dplyr

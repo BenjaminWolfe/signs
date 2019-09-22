@@ -1,6 +1,6 @@
-# Create a pkgdown website. Link to it in the DESCRIPTION file.
+# Link to the pkgdown website in the DESCRIPTION file.
+# Reconsider the gigantic plots on the README page.
 # Handle check results. Log this & other issues w/ Jon Harmon's factory package.
-# Maybe add Unicode 2212 note (actual character) to documentation for `signs`.
 # Add tests. Include scales::scientific (e-, e+).
 # Create hex for package. :)
 # Maybe a vignette?

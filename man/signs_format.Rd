@@ -6,7 +6,7 @@
 \usage{
 signs_format(format = getOption("signs.format"),
   add_plusses = getOption("signs.add.plusses"),
-  strip_leading_zeros = getOption("signs.strip.leading.zeros"),
+  trim_leading_zeros = getOption("signs.trim.leading.zeros"),
   blank_at_zero = getOption("signs.blank.at.zero"), ...)
 }
 \arguments{
@@ -19,7 +19,7 @@ such as \code{scales::number},
 
 \item{add_plusses}{Logical. Should positive values have plus signs?}
 
-\item{strip_leading_zeros}{Logical. Should \code{signs} strip leading zeros
+\item{trim_leading_zeros}{Logical. Should \code{signs} trim leading zeros
 from values of \code{x} between -1 and 1?}
 
 \item{blank_at_zero}{Logical. Should \code{signs} return a blank string
@@ -45,7 +45,7 @@ scales::number(x)
 f1 <- signs_format()
 f1(x)
 
-f2 <- signs_format(format = scales::percent, scale = .01)
+f2 <- signs_format(format = scales::percent, scale = 1, accuracy = 1)
 f2(x)
 
 f3 <- signs_format(add_plusses = TRUE)
@@ -54,6 +54,6 @@ f3(x)
 f4 <- signs_format(add_plusses = TRUE, blank_at_zero = TRUE)
 f4(x)
 
-f5 <- signs_format(strip_leading_zeros = TRUE, scale = .1, accuracy = .1)
+f5 <- signs_format(trim_leading_zeros = TRUE, scale = .1, accuracy = .1)
 f5(x)
 }
