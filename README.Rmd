@@ -9,7 +9,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  dpi = 96
 )
 ```
 
@@ -82,15 +83,16 @@ signs(x)
 We can see the difference in a plot.
 First, with `scales::number()`:
 
-```{r fig.asp=2}
+```{r}
 library(ggplot2)
 
 p <- 
   ggplot(sleep) +
   aes(group, extra) +
   geom_point() +
-  xlab("Medicine") +
-  ylab("Extra Sleep (hrs)")
+  xlab("Drug") +
+  ylab("Extra Sleep (hrs)") +
+  theme(panel.grid.minor = element_blank())
 
 p +
   scale_y_continuous(
@@ -102,7 +104,7 @@ p +
 
 Now with `signs::signs()`:
 
-```{r fig.asp=2}
+```{r}
 p +
   scale_y_continuous(
     limits = c(-4, 6),
@@ -115,17 +117,28 @@ We can use `signs()` in `geom_text()` as well.
 And we can pass it any of the arguments we would use with `scales::number()`,
 such as `accuracy` or `scale`.
 
-```{r fig.asp=2}
+```{r}
+library(ggrepel)
+
+label_hours <- function(mapping) {
+  geom_text_repel(
+    mapping,
+    nudge_x = -.1,
+    direction = "y",
+    segment.size = .2,
+    segment.color = "grey75",
+    hjust = "right"
+  )
+}
+
 p +
   scale_y_continuous(
     limits = c(-4, 6),
     breaks = seq(-4, 6),
     labels = signs
   ) +
-  geom_text(
-    aes(label = signs(extra, accuracy = .1)),
-    nudge_x = -.025,
-    hjust = "right"
+  label_hours(
+    aes(label = signs(extra, accuracy = .1))
   )
 ```
 
@@ -137,17 +150,15 @@ and the other function factories in the `scales` package.
 `signs_format()` returns a function that will format a numeric vector
 with minus signs.
 
-```{r fig.asp=2}
+```{r}
 p +
   scale_y_continuous(
     limits = c(-4, 6),
     breaks = seq(-4, 6),
     labels = signs_format(add_plusses = TRUE)
   ) +
-  geom_text(
-    aes(label = signs(extra, add_plusses = TRUE, accuracy = .1)),
-    nudge_x = -.025,
-    hjust = "right"
+  label_hours(
+    aes(label = signs(extra, add_plusses = TRUE, accuracy = .1))
   )
 ```
 
@@ -155,32 +166,36 @@ Sometimes we want a more minimal look.
 For plots on the interval `(-1, 1)`, we can trim leading zeros.
 And if we want we can leave zero itself blank:
 
-```{r fig.asp=0.5}
+```{r}
 p +
   scale_y_continuous(
-    limits = c(-1, 1),
-    breaks = seq(-1, 1, by = .25),
-    labels = signs_format(add_plusses = TRUE, blank_at_zero = TRUE)
+    limits = c(-.8, .8),
+    breaks = seq(-.8, .8, by = .2),
+    labels = signs_format(
+      add_plusses = TRUE,
+      trim_leading_zeros = TRUE,
+      treatment_at_zero = "blank",
+      accuracy = .01
+    )
   ) +
-  geom_text(
+  label_hours(
     aes(
       label = signs(
         extra,
         add_plusses = TRUE,
         trim_leading_zeros = TRUE,
-        accuracy = .1)
-      ),
-    nudge_x = -.025,
-    hjust = "right"
-  )
+        accuracy = .1
+        )
+      )
+    )
 ```
 
-Lastly, you can use any arbitrary function to format your number,
+You can use any arbitrary function to format your number,
 rather than `scales::number()`.
 Here we make the ridiculous assumption that everybody gets 8 hours of sleep,
 just so we can use `scales::percent()`.
 
-```{r fig.asp=2, message=FALSE}
+```{r message=FALSE}
 library(dplyr)
 
 q <- 
@@ -189,7 +204,7 @@ q <-
   ggplot() +
   aes(group, percent_change) +
   geom_point() +
-  xlab("Medicine") +
+  xlab("Drug") +
   ylab("Extra Sleep (% above 8 hrs)")
 
 q +
@@ -198,15 +213,41 @@ q +
     breaks = seq(-.25, .75, by = .25),
     labels = signs_format(format = percent, add_plusses = TRUE, accuracy = 1)
   ) +
-  geom_text(
+  label_hours(
     aes(
       label = signs(
         percent_change,
         format = percent,
         add_plusses = TRUE,
-        accuracy = .1)
-      ),
-    nudge_x = -.025,
-    hjust = "right"
+        accuracy = .1
+      )
+    )
+  )
+```
+
+You can also use a plus-or-minus symbol in front of the zero.
+
+```{r message=FALSE}
+q +
+  scale_y_continuous(
+    limits = c(-.25, .75),
+    breaks = seq(-.25, .75, by = .25),
+    labels = signs_format(
+      format = percent,
+      add_plusses = TRUE,
+      treatment_at_zero = "symbol",
+      accuracy = 1
+    )
+  ) +
+  label_hours(
+    aes(
+      label = signs(
+        percent_change,
+        format = percent,
+        add_plusses = TRUE,
+        treatment_at_zero = "symbol",
+        accuracy = .1
+      )
+    )
   )
 ```

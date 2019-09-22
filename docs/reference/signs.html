@@ -126,7 +126,7 @@ It makes everything look better!</p>
     <pre class="usage"><span class='fu'>signs</span>(<span class='no'>x</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"signs.format"</span>),
   <span class='kw'>add_plusses</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"signs.add.plusses"</span>),
   <span class='kw'>trim_leading_zeros</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"signs.trim.leading.zeros"</span>),
-  <span class='kw'>blank_at_zero</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"signs.blank.at.zero"</span>), <span class='no'>...</span>)</pre>
+  <span class='kw'>treatment_at_zero</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"signs.treatment.at.zero"</span>), <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -154,9 +154,11 @@ such as <code><a href='https://rdrr.io/pkg/scales/man/number_format.html'>scales
 from values of <code>x</code> between -1 and 1?</p></td>
     </tr>
     <tr>
-      <th>blank_at_zero</th>
-      <td><p>Logical. Should <code>signs</code> return a blank string
-when <code>x</code> is zero?</p></td>
+      <th>treatment_at_zero</th>
+      <td><p>Character. What should be returned
+when <code>x = 0</code>? Options <code>"none"</code> (no change),
+<code>"blank"</code> (a zero-length string),
+or <code>"symbol"</code> (add a plus-minus symbol).</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -169,22 +171,23 @@ when <code>x</code> is zero?</p></td>
     <p>A <code>UTF-8</code> character vector</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>add_plusses</code>, <code>trim_leading_zeros</code>, and <code>blank_at_zero</code>
+    <p><code>add_plusses</code>, <code>trim_leading_zeros</code>, and <code>treatment_at_zero</code>
 are offered for convenience.</p>
 <p>The options <code>signs.format</code>, <code>signs.add.plusses</code>,
-<code>signs.trim.leading.zeros</code>, and <code>signs.blank.at.zero</code>
+<code>signs.trim.leading.zeros</code>, and <code>signs.treatment.at.zero</code>
 are set when the package is loaded
-to <code><a href='https://rdrr.io/pkg/scales/man/number_format.html'>scales::number</a></code>, <code>FALSE</code>, <code>FALSE</code>, and <code>FALSE</code>,
+to <code><a href='https://rdrr.io/pkg/scales/man/number_format.html'>scales::number</a></code>, <code>FALSE</code>, <code>FALSE</code>, and <code>"none"</code>,
 respectively.
 If the package is not loaded and the these options are not otherwise set,
 <code>signs</code> will use those defaults.</p>
-<p><code>blank_at_zero</code> is applied <em>after</em> <code>format</code>;
-that is, if it is <code>TRUE</code> and you've specified an accuracy of <code>0.1</code>,
+<p><code>treatment_at_zero</code> is applied <em>after</em> <code>format</code>;
+that is, if it is <code>"blank"</code>
+and you've specified an accuracy of <code>0.1</code>,
 <code>-0.04</code> will show as blank.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(-<span class='fl'>5</span>, <span class='fl'>5</span>)
-<span class='kw pkg'>scales</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/scales/man/number_format.html'>number</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"  "5" </div><div class='input'><span class='fu'>signs</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"  "5" </div><div class='input'><span class='fu'>signs</span>(<span class='no'>x</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw pkg'>scales</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/scales/man/number_format.html'>percent</a></span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1] "-5%" "-4%" "-3%" "-2%" "-1%" "0%"  "1%"  "2%"  "3%"  "4%"  "5%" </div><div class='input'><span class='fu'>signs</span>(<span class='no'>x</span>, <span class='kw'>add_plusses</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "+1" "+2" "+3" "+4" "+5"</div><div class='input'><span class='fu'>signs</span>(<span class='no'>x</span>, <span class='kw'>add_plusses</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>blank_at_zero</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" ""   "+1" "+2" "+3" "+4" "+5"</div><div class='input'><span class='fu'>signs</span>(<span class='no'>x</span>, <span class='kw'>trim_leading_zeros</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>.1</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.1</span>)</div><div class='output co'>#&gt;  [1] "-.5" "-.4" "-.3" "-.2" "-.1" ".0"  ".1"  ".2"  ".3"  ".4"  ".5" </div></pre>
+<span class='kw pkg'>scales</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/scales/man/number_format.html'>number</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"  "5" </div><div class='input'><span class='fu'>signs</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"  "5" </div><div class='input'><span class='fu'>signs</span>(<span class='no'>x</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw pkg'>scales</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/scales/man/number_format.html'>percent</a></span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1] "-5%" "-4%" "-3%" "-2%" "-1%" "0%"  "1%"  "2%"  "3%"  "4%"  "5%" </div><div class='input'><span class='fu'>signs</span>(<span class='no'>x</span>, <span class='kw'>add_plusses</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "+1" "+2" "+3" "+4" "+5"</div><div class='input'><span class='fu'>signs</span>(<span class='no'>x</span>, <span class='kw'>add_plusses</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>treatment_at_zero</span> <span class='kw'>=</span> <span class='st'>"blank"</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" ""   "+1" "+2" "+3" "+4" "+5"</div><div class='input'><span class='fu'>signs</span>(<span class='no'>x</span>, <span class='kw'>add_plusses</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>treatment_at_zero</span> <span class='kw'>=</span> <span class='st'>"symbol"</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "±0" "+1" "+2" "+3" "+4" "+5"</div><div class='input'><span class='fu'>signs</span>(<span class='no'>x</span>, <span class='kw'>trim_leading_zeros</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>.1</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.1</span>)</div><div class='output co'>#&gt;  [1] "-.5" "-.4" "-.3" "-.2" "-.1" ".0"  ".1"  ".2"  ".3"  ".4"  ".5" </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -122,7 +122,7 @@ with proper minus signs.</p>
     <pre class="usage"><span class='fu'>signs_format</span>(<span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"signs.format"</span>),
   <span class='kw'>add_plusses</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"signs.add.plusses"</span>),
   <span class='kw'>trim_leading_zeros</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"signs.trim.leading.zeros"</span>),
-  <span class='kw'>blank_at_zero</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"signs.blank.at.zero"</span>), <span class='no'>...</span>)</pre>
+  <span class='kw'>treatment_at_zero</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"signs.treatment.at.zero"</span>), <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,9 +146,11 @@ such as <code><a href='https://rdrr.io/pkg/scales/man/number_format.html'>scales
 from values of <code>x</code> between -1 and 1?</p></td>
     </tr>
     <tr>
-      <th>blank_at_zero</th>
-      <td><p>Logical. Should <code>signs</code> return a blank string
-when <code>x</code> is exactly zero?</p></td>
+      <th>treatment_at_zero</th>
+      <td><p>Character. What should be returned
+when <code>x = 0</code>? Options <code>"none"</code> (no change),
+<code>"blank"</code> (a zero-length string),
+or <code>"symbol"</code> (add a plus-minus symbol).</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -173,10 +175,12 @@ when <code>x</code> is exactly zero?</p></td>
 <span class='fu'>f2</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5%" "-4%" "-3%" "-2%" "-1%" "0%"  "1%"  "2%"  "3%"  "4%"  "5%" </div><div class='input'>
 <span class='no'>f3</span> <span class='kw'>&lt;-</span> <span class='fu'>signs_format</span>(<span class='kw'>add_plusses</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='fu'>f3</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "+1" "+2" "+3" "+4" "+5"</div><div class='input'>
-<span class='no'>f4</span> <span class='kw'>&lt;-</span> <span class='fu'>signs_format</span>(<span class='kw'>add_plusses</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>blank_at_zero</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>f4</span> <span class='kw'>&lt;-</span> <span class='fu'>signs_format</span>(<span class='kw'>add_plusses</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>treatment_at_zero</span> <span class='kw'>=</span> <span class='st'>"blank"</span>)
 <span class='fu'>f4</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" ""   "+1" "+2" "+3" "+4" "+5"</div><div class='input'>
-<span class='no'>f5</span> <span class='kw'>&lt;-</span> <span class='fu'>signs_format</span>(<span class='kw'>trim_leading_zeros</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>.1</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.1</span>)
-<span class='fu'>f5</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-.5" "-.4" "-.3" "-.2" "-.1" ".0"  ".1"  ".2"  ".3"  ".4"  ".5" </div></pre>
+<span class='no'>f5</span> <span class='kw'>&lt;-</span> <span class='fu'>signs_format</span>(<span class='kw'>add_plusses</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>treatment_at_zero</span> <span class='kw'>=</span> <span class='st'>"symbol"</span>)
+<span class='fu'>f5</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "±0" "+1" "+2" "+3" "+4" "+5"</div><div class='input'>
+<span class='no'>f6</span> <span class='kw'>&lt;-</span> <span class='fu'>signs_format</span>(<span class='kw'>trim_leading_zeros</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>.1</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.1</span>)
+<span class='fu'>f6</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-.5" "-.4" "-.3" "-.2" "-.1" ".0"  ".1"  ".2"  ".3"  ".4"  ".5" </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

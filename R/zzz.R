@@ -6,7 +6,7 @@
     signs.format = scales::number,
     signs.add.plusses = FALSE,
     signs.trim.leading.zeros = FALSE,
-    signs.blank.at.zero = FALSE
+    signs.treatment.at.zero = "none"
   )
   toset <- !(names(op.signs) %in% names(op))
   if(any(toset)) options(op.signs[toset])

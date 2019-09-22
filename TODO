@@ -1,7 +1,4 @@
-# Link to the pkgdown website in the DESCRIPTION file.
-# Reconsider the gigantic plots on the README page.
 # Handle check results. Log this & other issues w/ Jon Harmon's factory package.
 # Add tests. Include scales::scientific (e-, e+).
-# Create hex for package. :)
 # Maybe a vignette?
 # Submit to CRAN!

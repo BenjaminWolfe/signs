@@ -7,7 +7,7 @@
 signs_format(format = getOption("signs.format"),
   add_plusses = getOption("signs.add.plusses"),
   trim_leading_zeros = getOption("signs.trim.leading.zeros"),
-  blank_at_zero = getOption("signs.blank.at.zero"), ...)
+  treatment_at_zero = getOption("signs.treatment.at.zero"), ...)
 }
 \arguments{
 \item{format}{Any function that takes a numeric vector
@@ -22,8 +22,10 @@ such as \code{scales::number},
 \item{trim_leading_zeros}{Logical. Should \code{signs} trim leading zeros
 from values of \code{x} between -1 and 1?}
 
-\item{blank_at_zero}{Logical. Should \code{signs} return a blank string
-when \code{x} is exactly zero?}
+\item{treatment_at_zero}{Character. What should be returned
+when \code{x = 0}? Options \code{"none"} (no change),
+\code{"blank"} (a zero-length string),
+or \code{"symbol"} (add a plus-minus symbol).}
 
 \item{...}{Other arguments passed on to \code{format}.}
 }
@@ -51,9 +53,12 @@ f2(x)
 f3 <- signs_format(add_plusses = TRUE)
 f3(x)
 
-f4 <- signs_format(add_plusses = TRUE, blank_at_zero = TRUE)
+f4 <- signs_format(add_plusses = TRUE, treatment_at_zero = "blank")
 f4(x)
 
-f5 <- signs_format(trim_leading_zeros = TRUE, scale = .1, accuracy = .1)
+f5 <- signs_format(add_plusses = TRUE, treatment_at_zero = "symbol")
 f5(x)
+
+f6 <- signs_format(trim_leading_zeros = TRUE, scale = .1, accuracy = .1)
+f6(x)
 }
