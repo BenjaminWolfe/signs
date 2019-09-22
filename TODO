@@ -1,5 +1,4 @@
 # Handle check results. Log this & other issues w/ Jon Harmon's factory package.
 # Decide whether to keep the `options` functionality or simplify.
-# Add tests. Include scales::scientific (e-, e+).
-# Maybe a vignette?
+# Decide whether I really like my argument names or want to tweak them a little.
 # Submit to CRAN!

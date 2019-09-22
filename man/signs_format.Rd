@@ -7,7 +7,7 @@
 signs_format(format = getOption("signs.format"),
   add_plusses = getOption("signs.add.plusses"),
   trim_leading_zeros = getOption("signs.trim.leading.zeros"),
-  treatment_at_zero = getOption("signs.treatment.at.zero"), ...)
+  label_at_zero = getOption("signs.label.at.zero"), ...)
 }
 \arguments{
 \item{format}{Any function that takes a numeric vector
@@ -22,7 +22,7 @@ such as \code{scales::number},
 \item{trim_leading_zeros}{Logical. Should \code{signs} trim leading zeros
 from values of \code{x} between -1 and 1?}
 
-\item{treatment_at_zero}{Character. What should be returned
+\item{label_at_zero}{Character. What should be returned
 when \code{x = 0}? Options \code{"none"} (no change),
 \code{"blank"} (a zero-length string),
 or \code{"symbol"} (add a plus-minus symbol).}
@@ -53,10 +53,10 @@ f2(x)
 f3 <- signs_format(add_plusses = TRUE)
 f3(x)
 
-f4 <- signs_format(add_plusses = TRUE, treatment_at_zero = "blank")
+f4 <- signs_format(add_plusses = TRUE, label_at_zero = "blank")
 f4(x)
 
-f5 <- signs_format(add_plusses = TRUE, treatment_at_zero = "symbol")
+f5 <- signs_format(add_plusses = TRUE, label_at_zero = "symbol")
 f5(x)
 
 f6 <- signs_format(trim_leading_zeros = TRUE, scale = .1, accuracy = .1)

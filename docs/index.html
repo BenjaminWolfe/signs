@@ -73,7 +73,7 @@
 <a href="#signs" class="anchor"></a>signs <a href="https://benjaminwolfe.github.io/signs/"><img src="reference/figures/logo.png" align="right" height="139"></a>
 </h1></div>
 <!-- badges: start -->
-<!-- badges: end -->
+
 <p><code>signs</code> makes it easy to use typographically accurate minus signs in plots, markdown, dashboards, or other displays.</p>
 <p>Ask any typography nut, and they can walk you through the differences among 4 glyphs that look almost alike:</p>
 <ul>
@@ -181,7 +181,7 @@ p <span class="op">+</span>
     <span class="dt">labels =</span> <span class="kw"><a href="reference/signs_format.html">signs_format</a></span>(
       <span class="dt">add_plusses =</span> <span class="ot">TRUE</span>,
       <span class="dt">trim_leading_zeros =</span> <span class="ot">TRUE</span>,
-      <span class="dt">treatment_at_zero =</span> <span class="st">"blank"</span>,
+      <span class="dt">label_at_zero =</span> <span class="st">"blank"</span>,
       <span class="dt">accuracy =</span> .<span class="dv">01</span>
     )
   ) <span class="op">+</span>
@@ -235,7 +235,7 @@ q <span class="op">+</span>
     <span class="dt">labels =</span> <span class="kw"><a href="reference/signs_format.html">signs_format</a></span>(
       <span class="dt">format =</span> percent,
       <span class="dt">add_plusses =</span> <span class="ot">TRUE</span>,
-      <span class="dt">treatment_at_zero =</span> <span class="st">"symbol"</span>,
+      <span class="dt">label_at_zero =</span> <span class="st">"symbol"</span>,
       <span class="dt">accuracy =</span> <span class="dv">1</span>
     )
   ) <span class="op">+</span>
@@ -245,7 +245,7 @@ q <span class="op">+</span>
         percent_change,
         <span class="dt">format =</span> percent,
         <span class="dt">add_plusses =</span> <span class="ot">TRUE</span>,
-        <span class="dt">treatment_at_zero =</span> <span class="st">"symbol"</span>,
+        <span class="dt">label_at_zero =</span> <span class="st">"symbol"</span>,
         <span class="dt">accuracy =</span> .<span class="dv">1</span>
       )
     )
@@ -272,7 +272,13 @@ q <span class="op">+</span>
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://travis-ci.org/BenjaminWolfe/signs"><img src="https://travis-ci.org/BenjaminWolfe/signs.svg?branch=master" alt="Travis build status"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 

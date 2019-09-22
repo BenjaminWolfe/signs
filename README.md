@@ -144,7 +144,7 @@ p +
     labels = signs_format(
       add_plusses = TRUE,
       trim_leading_zeros = TRUE,
-      treatment_at_zero = "blank",
+      label_at_zero = "blank",
       accuracy = .01
     )
   ) +
@@ -208,7 +208,7 @@ q +
     labels = signs_format(
       format = percent,
       add_plusses = TRUE,
-      treatment_at_zero = "symbol",
+      label_at_zero = "symbol",
       accuracy = 1
     )
   ) +
@@ -218,7 +218,7 @@ q +
         percent_change,
         format = percent,
         add_plusses = TRUE,
-        treatment_at_zero = "symbol",
+        label_at_zero = "symbol",
         accuracy = .1
       )
     )

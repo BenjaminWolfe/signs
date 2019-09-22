@@ -5,18 +5,18 @@
 #' is highly underrated.
 #' It makes everything look better!
 #'
-#' \code{add_plusses}, \code{trim_leading_zeros}, and \code{treatment_at_zero}
+#' \code{add_plusses}, \code{trim_leading_zeros}, and \code{label_at_zero}
 #' are offered for convenience.
 #'
 #' The options \code{signs.format}, \code{signs.add.plusses},
-#' \code{signs.trim.leading.zeros}, and \code{signs.treatment.at.zero}
+#' \code{signs.trim.leading.zeros}, and \code{signs.label.at.zero}
 #' are set when the package is loaded
 #' to \code{scales::number}, \code{FALSE}, \code{FALSE}, and \code{"none"},
 #' respectively.
 #' If the package is not loaded and the these options are not otherwise set,
 #' \code{signs} will use those defaults.
 #'
-#' \code{treatment_at_zero} is applied \emph{after} \code{format};
+#' \code{label_at_zero} is applied \emph{after} \code{format};
 #' that is, if it is \code{"blank"}
 #' and you've specified an accuracy of \code{0.1},
 #' \code{-0.04} will show as blank.
@@ -31,7 +31,7 @@
 #' @param add_plusses Logical. Should positive values have plus signs?
 #' @param trim_leading_zeros Logical. Should \code{signs} trim leading zeros
 #'   from values of \code{x} between -1 and 1?
-#' @param treatment_at_zero Character. What should be returned
+#' @param label_at_zero Character. What should be returned
 #'   when \code{x = 0}? Options \code{"none"} (no change),
 #'   \code{"blank"} (a zero-length string),
 #'   or \code{"symbol"} (add a plus-minus symbol).
@@ -48,27 +48,27 @@
 #' signs(x)
 #' signs(x, format = scales::percent, scale = 1, accuracy = 1)
 #' signs(x, add_plusses = TRUE)
-#' signs(x, add_plusses = TRUE, treatment_at_zero = "blank")
-#' signs(x, add_plusses = TRUE, treatment_at_zero = "symbol")
+#' signs(x, add_plusses = TRUE, label_at_zero = "blank")
+#' signs(x, add_plusses = TRUE, label_at_zero = "symbol")
 #' signs(x, trim_leading_zeros = TRUE, scale = .1, accuracy = .1)
 signs <- function(x,
                   format = getOption("signs.format"),
                   add_plusses = getOption("signs.add.plusses"),
                   trim_leading_zeros = getOption("signs.trim.leading.zeros"),
-                  treatment_at_zero = getOption("signs.treatment.at.zero"),
+                  label_at_zero = getOption("signs.label.at.zero"),
                   ...) {
 
   format             <- format             %||% scales::number
   add_plusses        <- add_plusses        %||% FALSE
   trim_leading_zeros <- trim_leading_zeros %||% FALSE
-  treatment_at_zero  <- treatment_at_zero  %||% "none"
+  label_at_zero      <- label_at_zero      %||% "none"
 
   if (!is.numeric(x)) stop("`x` should be a numeric vector.")
   check_args(
     format,
     add_plusses,
     trim_leading_zeros,
-    treatment_at_zero
+    label_at_zero
   )
 
   response <- format(x, ...)
@@ -83,7 +83,7 @@ signs <- function(x,
     response <- sub("(\\+|-)?0+\\.", "\\1.", response)
   }
   response[considered_zero] <- switch(
-    treatment_at_zero,
+    label_at_zero,
     "none"   = response[considered_zero],
     "blank"  = "",
     "symbol" = paste0("\u00b1", response[considered_zero])
@@ -110,7 +110,7 @@ signs <- function(x,
 #' @param add_plusses Logical. Should positive values have plus signs?
 #' @param trim_leading_zeros Logical. Should \code{signs} trim leading zeros
 #'   from values of \code{x} between -1 and 1?
-#' @param treatment_at_zero Character. What should be returned
+#' @param label_at_zero Character. What should be returned
 #'   when \code{x = 0}? Options \code{"none"} (no change),
 #'   \code{"blank"} (a zero-length string),
 #'   or \code{"symbol"} (add a plus-minus symbol).
@@ -135,10 +135,10 @@ signs <- function(x,
 #' f3 <- signs_format(add_plusses = TRUE)
 #' f3(x)
 #'
-#' f4 <- signs_format(add_plusses = TRUE, treatment_at_zero = "blank")
+#' f4 <- signs_format(add_plusses = TRUE, label_at_zero = "blank")
 #' f4(x)
 #'
-#' f5 <- signs_format(add_plusses = TRUE, treatment_at_zero = "symbol")
+#' f5 <- signs_format(add_plusses = TRUE, label_at_zero = "symbol")
 #' f5(x)
 #'
 #' f6 <- signs_format(trim_leading_zeros = TRUE, scale = .1, accuracy = .1)
@@ -147,19 +147,19 @@ signs_format <-
   function(format = getOption("signs.format"),
            add_plusses = getOption("signs.add.plusses"),
            trim_leading_zeros = getOption("signs.trim.leading.zeros"),
-           treatment_at_zero = getOption("signs.treatment.at.zero"),
+           label_at_zero = getOption("signs.label.at.zero"),
            ...) {
   format             <- format             %||% scales::number
   add_plusses        <- add_plusses        %||% FALSE
   trim_leading_zeros <- trim_leading_zeros %||% FALSE
-  treatment_at_zero  <- treatment_at_zero  %||% "none"
+  label_at_zero      <- label_at_zero      %||% "none"
 
   dots <- rlang::list2(...)
   check_args(
     format,
     add_plusses,
     trim_leading_zeros,
-    treatment_at_zero
+    label_at_zero
   )
 
   rlang::new_function(
@@ -169,7 +169,7 @@ signs_format <-
             format             = !!format,
             add_plusses        = !!add_plusses,
             trim_leading_zeros = !!trim_leading_zeros,
-            treatment_at_zero  = !!treatment_at_zero,
+            label_at_zero      = !!label_at_zero,
             !!!dots)
       }),
     rlang::caller_env()

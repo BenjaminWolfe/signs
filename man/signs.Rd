@@ -7,7 +7,7 @@
 signs(x, format = getOption("signs.format"),
   add_plusses = getOption("signs.add.plusses"),
   trim_leading_zeros = getOption("signs.trim.leading.zeros"),
-  treatment_at_zero = getOption("signs.treatment.at.zero"), ...)
+  label_at_zero = getOption("signs.label.at.zero"), ...)
 }
 \arguments{
 \item{x}{Numeric vector.}
@@ -24,7 +24,7 @@ such as \code{scales::number},
 \item{trim_leading_zeros}{Logical. Should \code{signs} trim leading zeros
 from values of \code{x} between -1 and 1?}
 
-\item{treatment_at_zero}{Character. What should be returned
+\item{label_at_zero}{Character. What should be returned
 when \code{x = 0}? Options \code{"none"} (no change),
 \code{"blank"} (a zero-length string),
 or \code{"symbol"} (add a plus-minus symbol).}
@@ -41,18 +41,18 @@ is highly underrated.
 It makes everything look better!
 }
 \details{
-\code{add_plusses}, \code{trim_leading_zeros}, and \code{treatment_at_zero}
+\code{add_plusses}, \code{trim_leading_zeros}, and \code{label_at_zero}
 are offered for convenience.
 
 The options \code{signs.format}, \code{signs.add.plusses},
-\code{signs.trim.leading.zeros}, and \code{signs.treatment.at.zero}
+\code{signs.trim.leading.zeros}, and \code{signs.label.at.zero}
 are set when the package is loaded
 to \code{scales::number}, \code{FALSE}, \code{FALSE}, and \code{"none"},
 respectively.
 If the package is not loaded and the these options are not otherwise set,
 \code{signs} will use those defaults.
 
-\code{treatment_at_zero} is applied \emph{after} \code{format};
+\code{label_at_zero} is applied \emph{after} \code{format};
 that is, if it is \code{"blank"}
 and you've specified an accuracy of \code{0.1},
 \code{-0.04} will show as blank.
@@ -63,7 +63,7 @@ scales::number(x)
 signs(x)
 signs(x, format = scales::percent, scale = 1, accuracy = 1)
 signs(x, add_plusses = TRUE)
-signs(x, add_plusses = TRUE, treatment_at_zero = "blank")
-signs(x, add_plusses = TRUE, treatment_at_zero = "symbol")
+signs(x, add_plusses = TRUE, label_at_zero = "blank")
+signs(x, add_plusses = TRUE, label_at_zero = "symbol")
 signs(x, trim_leading_zeros = TRUE, scale = .1, accuracy = .1)
 }
