@@ -29,10 +29,12 @@ Installation
 devtools::install_github("BenjaminWolfe/signs")
 ```
 
-Examples
---------
+Example
+-------
 
-Using `signs` is simple, especially if you're familiar with functions like `number()`, `number_format()`, `comma()`, `comma_format()`, `percent()`, and `percent_format()` from the [`scales`](https://scales.r-lib.org/reference/number_format.html) package. The package adds 2 functions analogous to these: `signs()` and `signs_format()`.
+Using `signs` is simple, especially if you're familiar with functions like `scales::number()`, `scales::number_format()`, `scales::comma()`, `scales::comma_format()`, `scales::percent()`, and `scales::percent_format()`.
+
+See `vignette("signs")` for a full tour of the package.
 
 ### Fixed-Width Fonts (indistinguishable)
 
@@ -45,6 +47,7 @@ library(signs)
 x <- seq(-4, 4)
 number(x)
 #> [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"
+
 signs(x)
 #> [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"
 ```
@@ -53,8 +56,8 @@ signs(x)
 
 We can see the difference in a plot.
 
--   Points in group 1 are labeled with a true Unicode minus glyph.
--   Points in group 2 are labeled with the traditional ASCII hyphen-minus.
+-   Points in group 1 are labeled with a true Unicode minus glyph: `signs()`. So is the y-axis: `signs_format()`.
+-   Points in group 2 are labeled with the traditional ASCII hyphen-minus: `scales::number()`.
 -   Usage is identical.
 
 ``` r
@@ -63,11 +66,7 @@ library(ggplot2)
 library(ggrepel)
 
 theme_set(theme_gray())
-theme_update(
-  panel.grid.minor = element_blank(),
-  axis.text.y = element_blank(),
-  axis.ticks.y = element_blank()
-)
+theme_update(panel.grid.minor = element_blank())
 
 p <- 
   ggplot(sleep) +
@@ -89,15 +88,18 @@ label_hours <- function(mapping) {
 
 p +
   label_hours(
-    aes(
+    mapping = aes(
       label = case_when(
-        group == 1 ~ signs(extra, accuracy = .1),
-        group == 2 ~ number(extra, accuracy = .1)
+        group == 1 ~ signs(extra, accuracy = .1), # Unicode minuses
+        group == 2 ~ number(extra, accuracy = .1) # ASCII minuses
       )
     )
+  ) +
+  scale_y_continuous(
+    limits = c(-4, 6),
+    breaks = seq(-4, 6),
+    labels = signs_format(accuracy = .1) # Unicode, analogous to number_format() 
   )
 ```
 
 <img src="man/figures/README-plots-1.png" width="100%" />
-
-Please see `vignette("signs")` for more information.

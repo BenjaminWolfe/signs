@@ -1,8 +1,8 @@
 Package: signs
 Title: Adds Proper Minus Signs
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
-    person(given = "Benjamin",
+    person(given = c("Benjamin", "E."),
            family = "Wolfe",
            role = c("aut", "cre"),
            email = "benjamin.e.wolfe@gmail.com",
