@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/BenjaminWolfe/signs.svg?branch=master)](https://travis-ci.org/BenjaminWolfe/signs)
+[![Codecov test coverage](https://codecov.io/gh/BenjaminWolfe/signs/branch/master/graph/badge.svg)](https://codecov.io/gh/BenjaminWolfe/signs?branch=master)
 <!-- badges: end -->
 
 `signs` makes it easy to use typographically accurate minus signs

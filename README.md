@@ -4,7 +4,7 @@ signs <a href='https://benjaminwolfe.github.io/signs/'><img src='man/figures/log
 ========================================================================================================================
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/BenjaminWolfe/signs.svg?branch=master)](https://travis-ci.org/BenjaminWolfe/signs) <!-- badges: end -->
+[![Travis build status](https://travis-ci.org/BenjaminWolfe/signs.svg?branch=master)](https://travis-ci.org/BenjaminWolfe/signs) [![Codecov test coverage](https://codecov.io/gh/BenjaminWolfe/signs/branch/master/graph/badge.svg)](https://codecov.io/gh/BenjaminWolfe/signs?branch=master) <!-- badges: end -->
 
 `signs` makes it easy to use typographically accurate minus signs in plots, markdown, dashboards, or other displays.
 
