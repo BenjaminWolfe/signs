@@ -1,0 +1,302 @@
+---
+title: "signs"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{signs}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, message = FALSE}
+library(scales)
+library(signs)
+library(dplyr)
+library(ggplot2)
+library(ggrepel)
+```
+
+## The Basics
+
+Using `signs` is simple, especially if you're familiar
+with functions like `number()`, `number_format()`,
+`comma()`, `comma_format()`, `percent()`, and `percent_format()`
+from the [`scales`](https://scales.r-lib.org/reference/number_format.html)
+package.
+The package adds 2 functions analogous to these: `signs()` and `signs_format()`.
+
+* Points in group 1 are labeled with a true Unicode minus glyph.
+* Points in group 2 are labeled with the traditional ASCII hyphen-minus.
+* Usage is identical.
+
+```{r basics}
+theme_set(theme_gray())
+theme_update(
+  panel.grid.minor = element_blank(),
+  axis.text.y = element_blank(),
+  axis.ticks.y = element_blank()
+)
+
+p <- 
+  ggplot(sleep) +
+  aes(group, extra) +
+  geom_point() +
+  xlab("Drug") +
+  ylab("Extra Sleep (hours)")
+
+label_hours <- function(mapping) {
+  geom_text_repel(
+    mapping,
+    nudge_x = -.1,
+    direction = "y",
+    segment.size = .4,
+    segment.color = "grey75",
+    hjust = "right"
+  )
+}
+
+p +
+  label_hours(
+    aes(
+      label = case_when(
+        group == 1 ~ signs(extra, accuracy = .1),
+        group == 2 ~ number(extra, accuracy = .1)
+      )
+    )
+  )
+```
+
+## Other Number Formats
+
+You can use any format with `signs::signs()``r "\u2014"`not just
+`scales::number()`.
+Let's assume everyone gets 8 hours of sleep,
+so we can label the points as __percentages__.
+
+```{r percentages}
+p +
+  ylab("Extra Sleep (% over 8 hours)") +
+  label_hours(
+    aes(
+      label = case_when(
+        group == 1 ~ signs(extra / 8, accuracy = .1, format = scales::percent),
+        group == 2 ~ percent(extra / 8, accuracy = .1)
+      )
+    )
+  )
+```
+
+Or we can muliply by days in a year and use `scales::comma()`.
+
+```{r commas}
+p +
+  ylab("Extra Sleep (hours / year)") +
+  label_hours(
+    aes(
+      label = case_when(
+        group == 1 ~ signs(extra * 365, format = scales::comma),
+        group == 2 ~ comma(extra * 365)
+      )
+    )
+  )
+```
+
+`format` can be any function that takes a numeric vector
+and returns a character vector.
+
+### Matching by Position
+
+Note that `format` and all other options (see below) come __after__ the dots;
+this way you can enjoy the same matching by position
+you know from `scales`.
+For example, if you prefer the simplicity of `number(x, .1)`,
+you can use `signs(x, .1)`.
+
+```{r matching-by-position}
+x <- seq(-4, 4)
+
+number(x, .1) # first argument is accuracy
+signs(x, .1) # first argument is accuracy
+```
+
+## Other Arguments
+
+`signs::signs()` offers 3 other arguments for convenience:
+
+1. `add_plusses`
+1. `trim_leading_zeros`
+1. `label_at_zero`
+
+(#3 is addressed below under _Axis Labels_.)
+
+Sometimes, as with this dataset,
+you want to show __change from a baseline__.
+You might not only want to include a `r "\u2212"` in front or negative numbers,
+but a + in front of positive numbers as well.
+This is as simple as `add_plusses = TRUE`.
+
+```{r add-plusses}
+p +
+  label_hours(
+    aes(
+      label = case_when(
+        group == 1 ~ signs(extra, accuracy = .1, add_plusses = TRUE),
+        group == 2 ~ number(extra, accuracy = .1)
+      )
+    )
+  )
+```
+
+If all values are on the interval (-1, 1),
+it can be more compact to remove leading zeros.
+Do this with `trim_leading_zeros = TRUE`:
+
+```{r trim-leading-zeros}
+p +
+  ylim(-.8, .8) +
+  label_hours(
+    aes(
+      label = case_when(
+        group == 1 ~ signs(extra, accuracy = .1, trim_leading_zeros = TRUE),
+        group == 2 ~ number(extra, accuracy = .1)
+      )
+    )
+  ) +
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+```
+
+## Axis Labels
+
+You can also use Unicode minus signs on an entire axis.
+The function is called `signs::signs_format()`,
+by analogy to `scales::number_format()`, `scales::percent_format()`,
+and the rest of the `_format()` functions.
+Note that it accepts all the same optional arguments as `signs::signs()`.
+
+```{r axis-labels}
+theme_update(
+  axis.text.y = element_text(hjust = 1)
+)
+
+p +
+  scale_y_continuous(
+    limits = c(-.8, .8),
+    breaks = seq(-.8, .8, by = .2),
+    labels = signs_format(
+      accuracy = .1,
+      add_plusses = TRUE,
+      trim_leading_zeros = TRUE
+    )
+  ) +
+  label_hours(
+    aes(
+      label = case_when(
+        group == 1 ~ signs(
+          extra,
+          accuracy = .1,
+          add_plusses = TRUE,
+          trim_leading_zeros = TRUE
+        ),
+        group == 2 ~ number(extra, accuracy = .1)
+      )
+    )
+  )
+```
+
+You may want to treat zero itself differently,
+particularly when every other number has either a plus or a minus.
+Maybe you'll be extra pedantic about it with `label_at_zero = "symbol"`
+(notice the y-axis labels below, not the data point labels):
+
+```{r plus-or-minus}
+p +
+  scale_y_continuous(
+    limits = c(-4, 6),
+    breaks = seq(-4, 6, by = 1),
+    labels = signs_format(
+      add_plusses = TRUE,
+      label_at_zero = "symbol"
+    )
+  ) +
+  label_hours(
+    aes(
+      label = case_when(
+        group == 1 ~ signs(
+          extra,
+          accuracy = .1,
+          add_plusses = TRUE
+        ),
+        group == 2 ~ number(extra, accuracy = .1)
+      )
+    )
+  )
+```
+
+Or, especially if the location of zero is already obvious,
+you might want to leave it blank
+with `label_at_zero = "blank"`:
+
+```{r zero-blank}
+p +
+  scale_y_continuous(
+    limits = c(-4, 6),
+    breaks = seq(-4, 6, by = 1),
+    labels = signs_format(
+      add_plusses = TRUE,
+      label_at_zero = "blank"
+    )
+  ) +
+  label_hours(
+    aes(
+      label = case_when(
+        group == 1 ~ signs(
+          extra,
+          accuracy = .1,
+          add_plusses = TRUE
+        ),
+        group == 2 ~ number(extra, accuracy = .1)
+      )
+    )
+  )
+```
+
+## Setting Options Globally
+
+You can set `format`, `add_plusses`, `trim_leading_zeros`, or `label_at_zero`
+globally for a script with `options()`:
+
+```{r setting-options-globally}
+options(
+  signs.format = scales::number,
+  signs.add.plusses = TRUE,
+  signs.trim.leading.zeros = TRUE,
+  signs.label.at.zero = "none"
+)
+
+p +
+  scale_y_continuous(
+    limits = c(-.8, .8),
+    breaks = seq(-.8, .8, by = .2),
+    labels = signs_format(accuracy = .1, label_at_zero = "blank")
+  ) +
+  label_hours(
+    aes(
+      label = case_when(
+        group == 1 ~ signs(extra, accuracy = .1),
+        group == 2 ~ number(extra, accuracy = .1)
+      )
+    )
+  )
+```
+
+The defaults are `scales::number`, `FALSE`, `FALSE`, and `"none"`, respectively.

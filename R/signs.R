@@ -22,6 +22,7 @@
 #' \code{-0.04} will show as blank.
 #'
 #' @param x Numeric vector.
+#' @param ... Other arguments passed on to \code{format}.
 #' @param format Any function that takes a numeric vector
 #'   and returns a character vector,
 #'   such as \code{scales::number},
@@ -35,7 +36,6 @@
 #'   when \code{x = 0}? Options \code{"none"} (no change),
 #'   \code{"blank"} (a zero-length string),
 #'   or \code{"symbol"} (add a plus-minus symbol).
-#' @param ... Other arguments passed on to \code{format}.
 #'
 #' @return A \code{UTF-8} character vector
 #' @import scales
@@ -46,17 +46,17 @@
 #' x <- seq(-5, 5)
 #' scales::number(x)
 #' signs(x)
-#' signs(x, format = scales::percent, scale = 1, accuracy = 1)
+#' signs(x, accuracy = 1, scale = 1, format = scales::percent)
 #' signs(x, add_plusses = TRUE)
 #' signs(x, add_plusses = TRUE, label_at_zero = "blank")
 #' signs(x, add_plusses = TRUE, label_at_zero = "symbol")
-#' signs(x, trim_leading_zeros = TRUE, scale = .1, accuracy = .1)
+#' signs(x, accuracy = .1, scale = .1, trim_leading_zeros = TRUE)
 signs <- function(x,
+                  ...,
                   format = getOption("signs.format"),
                   add_plusses = getOption("signs.add.plusses"),
                   trim_leading_zeros = getOption("signs.trim.leading.zeros"),
-                  label_at_zero = getOption("signs.label.at.zero"),
-                  ...) {
+                  label_at_zero = getOption("signs.label.at.zero")) {
 
   format             <- format             %||% scales::number
   add_plusses        <- add_plusses        %||% FALSE
@@ -101,6 +101,7 @@ signs <- function(x,
 #'
 #' See \code{\link{signs}} for details.
 #'
+#' @param ... Other arguments passed on to \code{format}.
 #' @param format Any function that takes a numeric vector
 #'   and returns a character vector,
 #'   such as \code{scales::number},
@@ -114,7 +115,6 @@ signs <- function(x,
 #'   when \code{x = 0}? Options \code{"none"} (no change),
 #'   \code{"blank"} (a zero-length string),
 #'   or \code{"symbol"} (add a plus-minus symbol).
-#' @param ... Other arguments passed on to \code{format}.
 #'
 #' @return A function that takes a numeric vector
 #'   and returns a \code{UTF-8} character vector
@@ -129,7 +129,7 @@ signs <- function(x,
 #' f1 <- signs_format()
 #' f1(x)
 #'
-#' f2 <- signs_format(format = scales::percent, scale = 1, accuracy = 1)
+#' f2 <- signs_format(accuracy = 1, scale = 1, format = scales::percent)
 #' f2(x)
 #'
 #' f3 <- signs_format(add_plusses = TRUE)
@@ -141,14 +141,14 @@ signs <- function(x,
 #' f5 <- signs_format(add_plusses = TRUE, label_at_zero = "symbol")
 #' f5(x)
 #'
-#' f6 <- signs_format(trim_leading_zeros = TRUE, scale = .1, accuracy = .1)
+#' f6 <- signs_format(accuracy = .1, scale = .1, trim_leading_zeros = TRUE)
 #' f6(x)
 signs_format <-
-  function(format = getOption("signs.format"),
+  function(...,
+           format = getOption("signs.format"),
            add_plusses = getOption("signs.add.plusses"),
            trim_leading_zeros = getOption("signs.trim.leading.zeros"),
-           label_at_zero = getOption("signs.label.at.zero"),
-           ...) {
+           label_at_zero = getOption("signs.label.at.zero")) {
   format             <- format             %||% scales::number
   add_plusses        <- add_plusses        %||% FALSE
   trim_leading_zeros <- trim_leading_zeros %||% FALSE
@@ -166,11 +166,11 @@ signs_format <-
     as.pairlist(alist(x = )),
     rlang::expr({
       signs(x                  = x,
+            !!!dots,
             format             = !!format,
             add_plusses        = !!add_plusses,
             trim_leading_zeros = !!trim_leading_zeros,
-            label_at_zero      = !!label_at_zero,
-            !!!dots)
+            label_at_zero      = !!label_at_zero)
       }),
     rlang::caller_env()
   )

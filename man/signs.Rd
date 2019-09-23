@@ -4,13 +4,15 @@
 \alias{signs}
 \title{Add proper minus signs}
 \usage{
-signs(x, format = getOption("signs.format"),
+signs(x, ..., format = getOption("signs.format"),
   add_plusses = getOption("signs.add.plusses"),
   trim_leading_zeros = getOption("signs.trim.leading.zeros"),
-  label_at_zero = getOption("signs.label.at.zero"), ...)
+  label_at_zero = getOption("signs.label.at.zero"))
 }
 \arguments{
 \item{x}{Numeric vector.}
+
+\item{...}{Other arguments passed on to \code{format}.}
 
 \item{format}{Any function that takes a numeric vector
 and returns a character vector,
@@ -28,8 +30,6 @@ from values of \code{x} between -1 and 1?}
 when \code{x = 0}? Options \code{"none"} (no change),
 \code{"blank"} (a zero-length string),
 or \code{"symbol"} (add a plus-minus symbol).}
-
-\item{...}{Other arguments passed on to \code{format}.}
 }
 \value{
 A \code{UTF-8} character vector
@@ -61,9 +61,9 @@ and you've specified an accuracy of \code{0.1},
 x <- seq(-5, 5)
 scales::number(x)
 signs(x)
-signs(x, format = scales::percent, scale = 1, accuracy = 1)
+signs(x, accuracy = 1, scale = 1, format = scales::percent)
 signs(x, add_plusses = TRUE)
 signs(x, add_plusses = TRUE, label_at_zero = "blank")
 signs(x, add_plusses = TRUE, label_at_zero = "symbol")
-signs(x, trim_leading_zeros = TRUE, scale = .1, accuracy = .1)
+signs(x, accuracy = .1, scale = .1, trim_leading_zeros = TRUE)
 }

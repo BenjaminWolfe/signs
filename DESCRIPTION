@@ -7,8 +7,8 @@ Authors@R:
            role = c("aut", "cre"),
            email = "benjamin.e.wolfe@gmail.com",
            comment = c(ORCID = "0000-0002-4339-9328"))
-Description: Package replaces ASCII hyphen-minus signs
-    with typographically accurate, aesthetically pleasing minus glyphs
+Description: Replaces ASCII hyphen-minus signs
+    with typographically accurate, aesthetically pleasing minus signs
     (Unicode 2212).
 License: MIT + file LICENSE
 URL: https://benjaminwolfe.github.io/signs
@@ -22,4 +22,7 @@ Suggests:
     ggplot2,
     dplyr,
     ggrepel,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

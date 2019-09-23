@@ -17,8 +17,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Adds Proper Minus Signs">
-<meta property="og:description" content="Package replaces ASCII hyphen-minus signs
-    with typographically accurate, aesthetically pleasing minus glyphs
+<meta property="og:description" content="Replaces ASCII hyphen-minus signs
+    with typographically accurate, aesthetically pleasing minus signs
     (Unicode 2212).">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
@@ -53,6 +53,9 @@
   </a>
 </li>
 <li>
+  <a href="articles/signs.html">Get started</a>
+</li>
+<li>
   <a href="reference/index.html">Reference</a>
 </li>
       </ul>
@@ -82,9 +85,8 @@
 <li>the em-dash (—, Unicode 2014)</li>
 <li>the true minus (−, Unicode 2212)</li>
 </ul>
-<p>The en-dash and em-dash are named after their widths (the width of an <code>n</code> and <code>m</code>, respectively). The true minus is the width of a digit and sits a bit higher than the others. The hyphen-minus, an ASCII convention, is the only one we get on our keyboards.</p>
-<p>These may be easier to distinguish in some fonts than others. In most fixed-width coding fonts, for example, they’re nearly (if not totally) indistinguishable. But a good font for plotting will usually have a different glyph for each.</p>
-<p>For me, using a true minus is like brewing high-end tea or wearing my favorite socks. Maybe nobody else notices, but it still feels good to me. If you feel the same way, this package may grow on you!</p>
+<p>In most fixed-width coding fonts, these are nearly (if not totally) indistinguishable. But a good font for plotting or reports will usually have a different glyph for each. The true minus takes up more space than the hyphen-minus (generally the width of a digit), and it often sits a little higher.</p>
+<p>For me, using a Unicode minus is like brewing high-end tea or wearing my favorite socks. Maybe nobody else notices, but it still looks good to me. If you, similarly, enjoy the little things, this package may grow on you!</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -103,154 +105,61 @@ devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(scales)
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(signs)
 
-x &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>)
+x &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)
 <span class="kw">number</span>(x)
-<span class="co">#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"  "5"</span>
+<span class="co">#&gt; [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"</span>
 <span class="kw"><a href="reference/signs.html">signs</a></span>(x)
-<span class="co">#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"  "5"</span></code></pre></div>
+<span class="co">#&gt; [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"</span></code></pre></div>
 </div>
-<div id="plots" class="section level3">
+<div id="plots-distinguishable" class="section level3">
 <h3 class="hasAnchor">
-<a href="#plots" class="anchor"></a>Plots</h3>
-<p>We can see the difference in a plot. First, with <code><a href="https://rdrr.io/pkg/scales/man/number_format.html">scales::number()</a></code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)
+<a href="#plots-distinguishable" class="anchor"></a>Plots (distinguishable)</h3>
+<p>We can see the difference in a plot.</p>
+<ul>
+<li>Points in group 1 are labeled with a true Unicode minus glyph.</li>
+<li>Points in group 2 are labeled with the traditional ASCII hyphen-minus.</li>
+<li>Usage is identical.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggrepel)
+
+<span class="kw">theme_set</span>(<span class="kw">theme_gray</span>())
+<span class="kw">theme_update</span>(
+  <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(),
+  <span class="dt">axis.text.y =</span> <span class="kw">element_blank</span>(),
+  <span class="dt">axis.ticks.y =</span> <span class="kw">element_blank</span>()
+)
 
 p &lt;-<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(sleep) <span class="op">+</span>
 <span class="st">  </span><span class="kw">aes</span>(group, extra) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">"Drug"</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">"Extra Sleep (hrs)"</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
-
-p <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(
-    <span class="dt">limits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),
-    <span class="dt">breaks =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),
-    <span class="dt">labels =</span> number
-  )</code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
-<p>Now with <code><a href="reference/signs.html">signs::signs()</a></code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(
-    <span class="dt">limits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),
-    <span class="dt">breaks =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),
-    <span class="dt">labels =</span> signs
-  )</code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
-<p>We can use <code><a href="reference/signs.html">signs()</a></code> in <code>geom_text()</code> as well. And we can pass it any of the arguments we would use with <code><a href="https://rdrr.io/pkg/scales/man/number_format.html">scales::number()</a></code>, such as <code>accuracy</code> or <code>scale</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggrepel)
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">"Extra Sleep (hours)"</span>)
 
 label_hours &lt;-<span class="st"> </span><span class="cf">function</span>(mapping) {
   <span class="kw">geom_text_repel</span>(
     mapping,
     <span class="dt">nudge_x =</span> <span class="op">-</span>.<span class="dv">1</span>,
     <span class="dt">direction =</span> <span class="st">"y"</span>,
-    <span class="dt">segment.size =</span> .<span class="dv">2</span>,
+    <span class="dt">segment.size =</span> .<span class="dv">4</span>,
     <span class="dt">segment.color =</span> <span class="st">"grey75"</span>,
     <span class="dt">hjust =</span> <span class="st">"right"</span>
   )
 }
 
 p <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(
-    <span class="dt">limits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),
-    <span class="dt">breaks =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),
-    <span class="dt">labels =</span> signs
-  ) <span class="op">+</span>
-<span class="st">  </span><span class="kw">label_hours</span>(
-    <span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw"><a href="reference/signs.html">signs</a></span>(extra, <span class="dt">accuracy =</span> .<span class="dv">1</span>))
-  )</code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
-<p>In datasets where the point is to show change from zero, we can also add plus signs for positive numbers. Notice here we use <code><a href="reference/signs_format.html">signs_format()</a></code> as well, analogous to <code>number_format()</code> and the other function factories in the <code>scales</code> package. <code><a href="reference/signs_format.html">signs_format()</a></code> returns a function that will format a numeric vector with minus signs.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(
-    <span class="dt">limits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),
-    <span class="dt">breaks =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),
-    <span class="dt">labels =</span> <span class="kw"><a href="reference/signs_format.html">signs_format</a></span>(<span class="dt">add_plusses =</span> <span class="ot">TRUE</span>)
-  ) <span class="op">+</span>
-<span class="st">  </span><span class="kw">label_hours</span>(
-    <span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw"><a href="reference/signs.html">signs</a></span>(extra, <span class="dt">add_plusses =</span> <span class="ot">TRUE</span>, <span class="dt">accuracy =</span> .<span class="dv">1</span>))
-  )</code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
-<p>Sometimes we want a more minimal look. For plots on the interval <code>(-1, 1)</code>, we can trim leading zeros. And if we want we can leave zero itself blank:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(
-    <span class="dt">limits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span>.<span class="dv">8</span>, .<span class="dv">8</span>),
-    <span class="dt">breaks =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span>.<span class="dv">8</span>, .<span class="dv">8</span>, <span class="dt">by =</span> .<span class="dv">2</span>),
-    <span class="dt">labels =</span> <span class="kw"><a href="reference/signs_format.html">signs_format</a></span>(
-      <span class="dt">add_plusses =</span> <span class="ot">TRUE</span>,
-      <span class="dt">trim_leading_zeros =</span> <span class="ot">TRUE</span>,
-      <span class="dt">label_at_zero =</span> <span class="st">"blank"</span>,
-      <span class="dt">accuracy =</span> .<span class="dv">01</span>
-    )
-  ) <span class="op">+</span>
 <span class="st">  </span><span class="kw">label_hours</span>(
     <span class="kw">aes</span>(
-      <span class="dt">label =</span> <span class="kw"><a href="reference/signs.html">signs</a></span>(
-        extra,
-        <span class="dt">add_plusses =</span> <span class="ot">TRUE</span>,
-        <span class="dt">trim_leading_zeros =</span> <span class="ot">TRUE</span>,
-        <span class="dt">accuracy =</span> .<span class="dv">1</span>
-        )
-      )
-    )
-<span class="co">#&gt; Warning: Removed 12 rows containing missing values (geom_point).</span>
-<span class="co">#&gt; Warning: Removed 12 rows containing missing values (geom_text_repel).</span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-7-1.png" width="100%"></p>
-<p>You can use any arbitrary function to format your number, rather than <code><a href="https://rdrr.io/pkg/scales/man/number_format.html">scales::number()</a></code>. Here we make the ridiculous assumption that everybody gets 8 hours of sleep, just so we can use <code><a href="https://rdrr.io/pkg/scales/man/number_format.html">scales::percent()</a></code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)
-
-q &lt;-<span class="st"> </span>
-<span class="st">  </span>sleep <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent_change =</span> extra <span class="op">/</span><span class="st"> </span><span class="dv">8</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">aes</span>(group, percent_change) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">"Drug"</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">"Extra Sleep (% above 8 hrs)"</span>)
-
-q <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(
-    <span class="dt">limits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span>.<span class="dv">25</span>, .<span class="dv">75</span>),
-    <span class="dt">breaks =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span>.<span class="dv">25</span>, .<span class="dv">75</span>, <span class="dt">by =</span> .<span class="dv">25</span>),
-    <span class="dt">labels =</span> <span class="kw"><a href="reference/signs_format.html">signs_format</a></span>(<span class="dt">format =</span> percent, <span class="dt">add_plusses =</span> <span class="ot">TRUE</span>, <span class="dt">accuracy =</span> <span class="dv">1</span>)
-  ) <span class="op">+</span>
-<span class="st">  </span><span class="kw">label_hours</span>(
-    <span class="kw">aes</span>(
-      <span class="dt">label =</span> <span class="kw"><a href="reference/signs.html">signs</a></span>(
-        percent_change,
-        <span class="dt">format =</span> percent,
-        <span class="dt">add_plusses =</span> <span class="ot">TRUE</span>,
-        <span class="dt">accuracy =</span> .<span class="dv">1</span>
+      <span class="dt">label =</span> <span class="kw">case_when</span>(
+        group <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> </span><span class="kw"><a href="reference/signs.html">signs</a></span>(extra, <span class="dt">accuracy =</span> .<span class="dv">1</span>),
+        group <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> </span><span class="kw">number</span>(extra, <span class="dt">accuracy =</span> .<span class="dv">1</span>)
       )
     )
   )</code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="100%"></p>
-<p>You can also use a plus-or-minus symbol in front of the zero.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">q <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(
-    <span class="dt">limits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span>.<span class="dv">25</span>, .<span class="dv">75</span>),
-    <span class="dt">breaks =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span>.<span class="dv">25</span>, .<span class="dv">75</span>, <span class="dt">by =</span> .<span class="dv">25</span>),
-    <span class="dt">labels =</span> <span class="kw"><a href="reference/signs_format.html">signs_format</a></span>(
-      <span class="dt">format =</span> percent,
-      <span class="dt">add_plusses =</span> <span class="ot">TRUE</span>,
-      <span class="dt">label_at_zero =</span> <span class="st">"symbol"</span>,
-      <span class="dt">accuracy =</span> <span class="dv">1</span>
-    )
-  ) <span class="op">+</span>
-<span class="st">  </span><span class="kw">label_hours</span>(
-    <span class="kw">aes</span>(
-      <span class="dt">label =</span> <span class="kw"><a href="reference/signs.html">signs</a></span>(
-        percent_change,
-        <span class="dt">format =</span> percent,
-        <span class="dt">add_plusses =</span> <span class="ot">TRUE</span>,
-        <span class="dt">label_at_zero =</span> <span class="st">"symbol"</span>,
-        <span class="dt">accuracy =</span> .<span class="dv">1</span>
-      )
-    )
-  )</code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-9-1.png" width="100%"></p>
+<p><img src="reference/figures/README-plots-1.png" width="100%"></p>
+<p>Please see <code><a href="articles/signs.html">vignette("signs")</a></code> for more information.</p>
 </div>
 </div>
 </div>

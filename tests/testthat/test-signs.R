@@ -9,7 +9,7 @@ test_that(
       c("\u22121", "0", "1")
     )
     expect_equal(
-      signs(x, format = scales::percent, scale = 1, accuracy = 1),
+      signs(x, accuracy = 1, scale = 1, format = scales::percent),
       c("\u22121%", "0%", "1%")
     )
     expect_equal(
@@ -25,7 +25,7 @@ test_that(
       c("\u22121", "\u00b10", "1")
     )
     expect_equal(
-      signs(x, trim_leading_zeros = TRUE, scale = .1, accuracy = .1),
+      signs(x, accuracy = .1, scale = .1, trim_leading_zeros = TRUE),
       c("\u2212.1", ".0", ".1")
     )
   }
@@ -129,11 +129,11 @@ test_that(
   "scientific notation works",
   {
     expect_equal(
-      signs(x, format = scales::scientific, scale = 1e-3),
+      signs(x, scale = 1e-3, format = scales::scientific),
       c("\u22121e\u221203", "0e+00", "1e\u221203")
     )
     expect_equal(
-      signs(x, format = scales::scientific, scale = 1e+3, add_plusses = TRUE),
+      signs(x, scale = 1e+3, format = scales::scientific, add_plusses = TRUE),
       c("\u22121e+03", "0e+00", "+1e+03")
     )
   }

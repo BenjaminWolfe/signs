@@ -4,12 +4,14 @@
 \alias{signs_format}
 \title{A function factory to add proper minus signs}
 \usage{
-signs_format(format = getOption("signs.format"),
+signs_format(..., format = getOption("signs.format"),
   add_plusses = getOption("signs.add.plusses"),
   trim_leading_zeros = getOption("signs.trim.leading.zeros"),
-  label_at_zero = getOption("signs.label.at.zero"), ...)
+  label_at_zero = getOption("signs.label.at.zero"))
 }
 \arguments{
+\item{...}{Other arguments passed on to \code{format}.}
+
 \item{format}{Any function that takes a numeric vector
 and returns a character vector,
 such as \code{scales::number},
@@ -26,8 +28,6 @@ from values of \code{x} between -1 and 1?}
 when \code{x = 0}? Options \code{"none"} (no change),
 \code{"blank"} (a zero-length string),
 or \code{"symbol"} (add a plus-minus symbol).}
-
-\item{...}{Other arguments passed on to \code{format}.}
 }
 \value{
 A function that takes a numeric vector
@@ -47,7 +47,7 @@ scales::number(x)
 f1 <- signs_format()
 f1(x)
 
-f2 <- signs_format(format = scales::percent, scale = 1, accuracy = 1)
+f2 <- signs_format(accuracy = 1, scale = 1, format = scales::percent)
 f2(x)
 
 f3 <- signs_format(add_plusses = TRUE)
@@ -59,6 +59,6 @@ f4(x)
 f5 <- signs_format(add_plusses = TRUE, label_at_zero = "symbol")
 f5(x)
 
-f6 <- signs_format(trim_leading_zeros = TRUE, scale = .1, accuracy = .1)
+f6 <- signs_format(accuracy = .1, scale = .1, trim_leading_zeros = TRUE)
 f6(x)
 }

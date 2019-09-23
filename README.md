@@ -15,11 +15,9 @@ Ask any typography nut, and they can walk you through the differences among 4 gl
 -   the em-dash (—, Unicode 2014)
 -   the true minus (−, Unicode 2212)
 
-The en-dash and em-dash are named after their widths (the width of an `n` and `m`, respectively). The true minus is the width of a digit and sits a bit higher than the others. The hyphen-minus, an ASCII convention, is the only one we get on our keyboards.
+In most fixed-width coding fonts, these are nearly (if not totally) indistinguishable. But a good font for plotting or reports will usually have a different glyph for each. The true minus takes up more space than the hyphen-minus (generally the width of a digit), and it often sits a little higher.
 
-These may be easier to distinguish in some fonts than others. In most fixed-width coding fonts, for example, they're nearly (if not totally) indistinguishable. But a good font for plotting will usually have a different glyph for each.
-
-For me, using a true minus is like brewing high-end tea or wearing my favorite socks. Maybe nobody else notices, but it still feels good to me. If you feel the same way, this package may grow on you!
+For me, using a Unicode minus is like brewing high-end tea or wearing my favorite socks. Maybe nobody else notices, but it still looks good to me. If you, similarly, enjoy the little things, this package may grow on you!
 
 Installation
 ------------
@@ -44,185 +42,62 @@ As mentioned above, the difference is hard to see with a fixed-width typeface. T
 library(scales)
 library(signs)
 
-x <- seq(-5, 5)
+x <- seq(-4, 4)
 number(x)
-#>  [1] "-5" "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"  "5"
+#> [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"
 signs(x)
-#>  [1] "-5" "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"  "5"
+#> [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"
 ```
 
-### Plots
+### Plots (distinguishable)
 
-We can see the difference in a plot. First, with `scales::number()`:
+We can see the difference in a plot.
+
+-   Points in group 1 are labeled with a true Unicode minus glyph.
+-   Points in group 2 are labeled with the traditional ASCII hyphen-minus.
+-   Usage is identical.
 
 ``` r
+library(dplyr)
 library(ggplot2)
+library(ggrepel)
+
+theme_set(theme_gray())
+theme_update(
+  panel.grid.minor = element_blank(),
+  axis.text.y = element_blank(),
+  axis.ticks.y = element_blank()
+)
 
 p <- 
   ggplot(sleep) +
   aes(group, extra) +
   geom_point() +
   xlab("Drug") +
-  ylab("Extra Sleep (hrs)") +
-  theme(panel.grid.minor = element_blank())
-
-p +
-  scale_y_continuous(
-    limits = c(-4, 6),
-    breaks = seq(-4, 6),
-    labels = number
-  )
-```
-
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
-
-Now with `signs::signs()`:
-
-``` r
-p +
-  scale_y_continuous(
-    limits = c(-4, 6),
-    breaks = seq(-4, 6),
-    labels = signs
-  )
-```
-
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
-
-We can use `signs()` in `geom_text()` as well. And we can pass it any of the arguments we would use with `scales::number()`, such as `accuracy` or `scale`.
-
-``` r
-library(ggrepel)
+  ylab("Extra Sleep (hours)")
 
 label_hours <- function(mapping) {
   geom_text_repel(
     mapping,
     nudge_x = -.1,
     direction = "y",
-    segment.size = .2,
+    segment.size = .4,
     segment.color = "grey75",
     hjust = "right"
   )
 }
 
 p +
-  scale_y_continuous(
-    limits = c(-4, 6),
-    breaks = seq(-4, 6),
-    labels = signs
-  ) +
-  label_hours(
-    aes(label = signs(extra, accuracy = .1))
-  )
-```
-
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
-
-In datasets where the point is to show change from zero, we can also add plus signs for positive numbers. Notice here we use `signs_format()` as well, analogous to `number_format()` and the other function factories in the `scales` package. `signs_format()` returns a function that will format a numeric vector with minus signs.
-
-``` r
-p +
-  scale_y_continuous(
-    limits = c(-4, 6),
-    breaks = seq(-4, 6),
-    labels = signs_format(add_plusses = TRUE)
-  ) +
-  label_hours(
-    aes(label = signs(extra, add_plusses = TRUE, accuracy = .1))
-  )
-```
-
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
-
-Sometimes we want a more minimal look. For plots on the interval `(-1, 1)`, we can trim leading zeros. And if we want we can leave zero itself blank:
-
-``` r
-p +
-  scale_y_continuous(
-    limits = c(-.8, .8),
-    breaks = seq(-.8, .8, by = .2),
-    labels = signs_format(
-      add_plusses = TRUE,
-      trim_leading_zeros = TRUE,
-      label_at_zero = "blank",
-      accuracy = .01
-    )
-  ) +
   label_hours(
     aes(
-      label = signs(
-        extra,
-        add_plusses = TRUE,
-        trim_leading_zeros = TRUE,
-        accuracy = .1
-        )
-      )
-    )
-#> Warning: Removed 12 rows containing missing values (geom_point).
-#> Warning: Removed 12 rows containing missing values (geom_text_repel).
-```
-
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
-
-You can use any arbitrary function to format your number, rather than `scales::number()`. Here we make the ridiculous assumption that everybody gets 8 hours of sleep, just so we can use `scales::percent()`.
-
-``` r
-library(dplyr)
-
-q <- 
-  sleep %>% 
-  mutate(percent_change = extra / 8) %>% 
-  ggplot() +
-  aes(group, percent_change) +
-  geom_point() +
-  xlab("Drug") +
-  ylab("Extra Sleep (% above 8 hrs)")
-
-q +
-  scale_y_continuous(
-    limits = c(-.25, .75),
-    breaks = seq(-.25, .75, by = .25),
-    labels = signs_format(format = percent, add_plusses = TRUE, accuracy = 1)
-  ) +
-  label_hours(
-    aes(
-      label = signs(
-        percent_change,
-        format = percent,
-        add_plusses = TRUE,
-        accuracy = .1
+      label = case_when(
+        group == 1 ~ signs(extra, accuracy = .1),
+        group == 2 ~ number(extra, accuracy = .1)
       )
     )
   )
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-plots-1.png" width="100%" />
 
-You can also use a plus-or-minus symbol in front of the zero.
-
-``` r
-q +
-  scale_y_continuous(
-    limits = c(-.25, .75),
-    breaks = seq(-.25, .75, by = .25),
-    labels = signs_format(
-      format = percent,
-      add_plusses = TRUE,
-      label_at_zero = "symbol",
-      accuracy = 1
-    )
-  ) +
-  label_hours(
-    aes(
-      label = signs(
-        percent_change,
-        format = percent,
-        add_plusses = TRUE,
-        label_at_zero = "symbol",
-        accuracy = .1
-      )
-    )
-  )
-```
-
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+Please see `vignette("signs")` for more information.
