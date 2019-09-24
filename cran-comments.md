@@ -3,6 +3,7 @@
 * local OS X install, R 3.7.0
 * ubuntu 16.04 (on travis-ci), R 3.6.1
 * win-builder (release)
+* windows devel on r-hub
 
 ## R CMD check results
 
