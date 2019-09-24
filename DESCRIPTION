@@ -1,22 +1,23 @@
 Package: signs
-Title: Adds Proper Minus Signs
-Version: 0.1.0
+Title: Insert Proper Minus Signs
+Version: 0.0.0.9000
 Authors@R: 
     person(given = c("Benjamin", "E."),
            family = "Wolfe",
            role = c("aut", "cre"),
            email = "benjamin.e.wolfe@gmail.com",
            comment = c(ORCID = "0000-0002-4339-9328"))
-Description: Replaces ASCII hyphen-minus signs
-    with typographically accurate, aesthetically pleasing minus signs
-    (Unicode 2212).
-License: MIT + file LICENSE
+Description: Provides convenience functions to replace hyphen-minuses (ASCII 45)
+    with proper minus signs (Unicode character 2212). The minus sign is wider
+    and slightly nicer for display than the hyphen-minus we use for computation.
 URL: https://benjaminwolfe.github.io/signs
+BugReports: https://github.com/BenjaminWolfe/signs/issues
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
     scales,
-    rlang
+    rlang (>= 0.4.0)
 RoxygenNote: 6.1.1
 Suggests: 
     ggplot2,
