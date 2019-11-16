@@ -138,10 +138,10 @@ with proper minus signs.</p>
       <th>format</th>
       <td><p>Any function that takes a numeric vector
 and returns a character vector,
-such as <code><a href='https://rdrr.io/pkg/scales/man/number_format.html'>scales::number</a></code>,
-<code><a href='https://rdrr.io/pkg/scales/man/number_format.html'>scales::comma</a></code>, or
-<code><a href='https://rdrr.io/pkg/scales/man/number_format.html'>scales::percent</a></code>
-(all of which are documented at <code><a href='https://rdrr.io/pkg/scales/man/number_format.html'>number_format</a></code>).</p></td>
+such as <code><a href='https://scales.r-lib.org//reference/number_format.html'>scales::number</a></code>,
+<code><a href='https://scales.r-lib.org//reference/number_format.html'>scales::comma</a></code>, or
+<code><a href='https://scales.r-lib.org//reference/number_format.html'>scales::percent</a></code>
+(all of which are documented at <code><a href='https://scales.r-lib.org//reference/number_format.html'>number_format</a></code>).</p></td>
     </tr>
     <tr>
       <th>add_plusses</th>
@@ -171,10 +171,10 @@ or <code>"symbol"</code> (add a plus-minus symbol).</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(-<span class='fl'>5</span>, <span class='fl'>5</span>)
-<span class='kw pkg'>scales</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/scales/man/number_format.html'>number</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"  "5" </div><div class='input'>
+<span class='kw pkg'>scales</span><span class='kw ns'>::</span><span class='fu'><a href='https://scales.r-lib.org//reference/number_format.html'>number</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"  "5" </div><div class='input'>
 <span class='no'>f1</span> <span class='kw'>&lt;-</span> <span class='fu'>signs_format</span>()
 <span class='fu'>f1</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"  "5" </div><div class='input'>
-<span class='no'>f2</span> <span class='kw'>&lt;-</span> <span class='fu'>signs_format</span>(<span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw pkg'>scales</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/scales/man/number_format.html'>percent</a></span>)
+<span class='no'>f2</span> <span class='kw'>&lt;-</span> <span class='fu'>signs_format</span>(<span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw pkg'>scales</span><span class='kw ns'>::</span><span class='no'><a href='https://scales.r-lib.org//reference/number_format.html'>percent</a></span>)
 <span class='fu'>f2</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5%" "-4%" "-3%" "-2%" "-1%" "0%"  "1%"  "2%"  "3%"  "4%"  "5%" </div><div class='input'>
 <span class='no'>f3</span> <span class='kw'>&lt;-</span> <span class='fu'>signs_format</span>(<span class='kw'>add_plusses</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='fu'>f3</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "-5" "-4" "-3" "-2" "-1" "0"  "+1" "+2" "+3" "+4" "+5"</div><div class='input'>

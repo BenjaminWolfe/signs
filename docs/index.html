@@ -71,9 +71,9 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="signs" class="section level1">
+<div id="signs-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#signs" class="anchor"></a>signs <a href="https://benjaminwolfe.github.io/signs/"><img src="reference/figures/logo.png" align="right" height="139"></a>
+<a href="#signs-" class="anchor"></a>signs <a href="https://benjaminwolfe.github.io/signs/"><img src="reference/figures/logo.png" align="right" height="139"></a>
 </h1></div>
 <!-- badges: start -->
 
@@ -91,27 +91,27 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p><code>signs</code> is not yet available on <a href="https://CRAN.R-project.org">CRAN</a>. You can install it from <a href="https://github.com/BenjaminWolfe/signs">GitHub</a> with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"BenjaminWolfe/signs"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb1-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"BenjaminWolfe/signs"</span>)</a></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<p>Using <code>signs</code> is simple, especially if you’re familiar with functions like <code><a href="https://rdrr.io/pkg/scales/man/number_format.html">scales::number()</a></code>, <code><a href="https://rdrr.io/pkg/scales/man/number_format.html">scales::number_format()</a></code>, <code><a href="https://rdrr.io/pkg/scales/man/number_format.html">scales::comma()</a></code>, <code><a href="https://rdrr.io/pkg/scales/man/number_format.html">scales::comma_format()</a></code>, <code><a href="https://rdrr.io/pkg/scales/man/number_format.html">scales::percent()</a></code>, and <code><a href="https://rdrr.io/pkg/scales/man/number_format.html">scales::percent_format()</a></code>.</p>
+<p>Using <code>signs</code> is simple, especially if you’re familiar with functions like <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::number()</a></code>, <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::number_format()</a></code>, <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::comma()</a></code>, <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::comma_format()</a></code>, <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::percent()</a></code>, and <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::percent_format()</a></code>.</p>
 <p>See <code><a href="articles/signs.html">vignette("signs")</a></code> for a full tour of the package.</p>
 <div id="fixed-width-fonts-indistinguishable" class="section level3">
 <h3 class="hasAnchor">
 <a href="#fixed-width-fonts-indistinguishable" class="anchor"></a>Fixed-Width Fonts (indistinguishable)</h3>
 <p>As mentioned above, the difference is hard to see with a fixed-width typeface. That’s not a problem with the package; it’s just how these fonts work.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(scales)
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(signs)
-
-x &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)
-<span class="kw">number</span>(x)
-<span class="co">#&gt; [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"</span>
-
-<span class="kw"><a href="reference/signs.html">signs</a></span>(x)
-<span class="co">#&gt; [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(scales)</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(signs)</a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4">x &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">number</span>(x)</a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt; [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"</span></a>
+<a class="sourceLine" id="cb2-7" title="7"></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="kw"><a href="reference/signs.html">signs</a></span>(x)</a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt; [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"</span></a></code></pre></div>
 </div>
 <div id="plots-distinguishable" class="section level3">
 <h3 class="hasAnchor">
@@ -119,48 +119,48 @@ x &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base
 <p>We can see the difference in a plot.</p>
 <ul>
 <li>Points in group 1 are labeled with a true Unicode minus glyph: <code><a href="reference/signs.html">signs()</a></code>. So is the y-axis: <code><a href="reference/signs_format.html">signs_format()</a></code>.</li>
-<li>Points in group 2 are labeled with the traditional ASCII hyphen-minus: <code><a href="https://rdrr.io/pkg/scales/man/number_format.html">scales::number()</a></code>.</li>
+<li>Points in group 2 are labeled with the traditional ASCII hyphen-minus: <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::number()</a></code>.</li>
 <li>Usage is identical.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggrepel)
-
-<span class="kw">theme_set</span>(<span class="kw">theme_gray</span>())
-<span class="kw">theme_update</span>(<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())
-
-p &lt;-<span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(sleep) <span class="op">+</span>
-<span class="st">  </span><span class="kw">aes</span>(group, extra) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">"Drug"</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">"Extra Sleep (hours)"</span>)
-
-label_hours &lt;-<span class="st"> </span><span class="cf">function</span>(mapping) {
-  <span class="kw">geom_text_repel</span>(
-    mapping,
-    <span class="dt">nudge_x =</span> <span class="op">-</span>.<span class="dv">1</span>,
-    <span class="dt">direction =</span> <span class="st">"y"</span>,
-    <span class="dt">segment.size =</span> .<span class="dv">4</span>,
-    <span class="dt">segment.color =</span> <span class="st">"grey75"</span>,
-    <span class="dt">hjust =</span> <span class="st">"right"</span>
-  )
-}
-
-p <span class="op">+</span>
-<span class="st">  </span><span class="kw">label_hours</span>(
-    <span class="dt">mapping =</span> <span class="kw">aes</span>(
-      <span class="dt">label =</span> <span class="kw">case_when</span>(
-        group <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> </span><span class="kw"><a href="reference/signs.html">signs</a></span>(extra, <span class="dt">accuracy =</span> .<span class="dv">1</span>), <span class="co"># Unicode minuses</span>
-        group <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> </span><span class="kw">number</span>(extra, <span class="dt">accuracy =</span> .<span class="dv">1</span>) <span class="co"># ASCII minuses</span>
-      )
-    )
-  ) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(
-    <span class="dt">limits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),
-    <span class="dt">breaks =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),
-    <span class="dt">labels =</span> <span class="kw"><a href="reference/signs_format.html">signs_format</a></span>(<span class="dt">accuracy =</span> .<span class="dv">1</span>) <span class="co"># Unicode, analogous to number_format() </span>
-  )</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggrepel)</a>
+<a class="sourceLine" id="cb3-4" title="4"></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="kw">theme_set</span>(<span class="kw">theme_gray</span>())</a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="kw">theme_update</span>(<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb3-7" title="7"></a>
+<a class="sourceLine" id="cb3-8" title="8">p &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="st">  </span><span class="kw">ggplot</span>(sleep) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="st">  </span><span class="kw">aes</span>(group, extra) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"Drug"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"Extra Sleep (hours)"</span>)</a>
+<a class="sourceLine" id="cb3-14" title="14"></a>
+<a class="sourceLine" id="cb3-15" title="15">label_hours &lt;-<span class="st"> </span><span class="cf">function</span>(mapping) {</a>
+<a class="sourceLine" id="cb3-16" title="16">  <span class="kw">geom_text_repel</span>(</a>
+<a class="sourceLine" id="cb3-17" title="17">    mapping,</a>
+<a class="sourceLine" id="cb3-18" title="18">    <span class="dt">nudge_x =</span> <span class="fl">-.1</span>,</a>
+<a class="sourceLine" id="cb3-19" title="19">    <span class="dt">direction =</span> <span class="st">"y"</span>,</a>
+<a class="sourceLine" id="cb3-20" title="20">    <span class="dt">segment.size =</span> <span class="fl">.4</span>,</a>
+<a class="sourceLine" id="cb3-21" title="21">    <span class="dt">segment.color =</span> <span class="st">"grey75"</span>,</a>
+<a class="sourceLine" id="cb3-22" title="22">    <span class="dt">hjust =</span> <span class="st">"right"</span></a>
+<a class="sourceLine" id="cb3-23" title="23">  )</a>
+<a class="sourceLine" id="cb3-24" title="24">}</a>
+<a class="sourceLine" id="cb3-25" title="25"></a>
+<a class="sourceLine" id="cb3-26" title="26">p <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-27" title="27"><span class="st">  </span><span class="kw">label_hours</span>(</a>
+<a class="sourceLine" id="cb3-28" title="28">    <span class="dt">mapping =</span> <span class="kw">aes</span>(</a>
+<a class="sourceLine" id="cb3-29" title="29">      <span class="dt">label =</span> <span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb3-30" title="30">        group <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> </span><span class="kw"><a href="reference/signs.html">signs</a></span>(extra, <span class="dt">accuracy =</span> <span class="fl">.1</span>), <span class="co"># Unicode minuses</span></a>
+<a class="sourceLine" id="cb3-31" title="31">        group <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> </span><span class="kw">number</span>(extra, <span class="dt">accuracy =</span> <span class="fl">.1</span>) <span class="co"># ASCII minuses</span></a>
+<a class="sourceLine" id="cb3-32" title="32">      )</a>
+<a class="sourceLine" id="cb3-33" title="33">    )</a>
+<a class="sourceLine" id="cb3-34" title="34">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-35" title="35"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb3-36" title="36">    <span class="dt">limits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb3-37" title="37">    <span class="dt">breaks =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb3-38" title="38">    <span class="dt">labels =</span> <span class="kw"><a href="reference/signs_format.html">signs_format</a></span>(<span class="dt">accuracy =</span> <span class="fl">.1</span>) <span class="co"># Unicode, analogous to number_format() </span></a>
+<a class="sourceLine" id="cb3-39" title="39">  )</a></code></pre></div>
 <p><img src="reference/figures/README-plots-1.png" width="100%"></p>
 </div>
 </div>
@@ -171,6 +171,8 @@ p <span class="op">+</span>
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=signs">https://​cloud.r-project.org/​package=signs</a>
+</li>
 <li>Report a bug at <br><a href="https://github.com/BenjaminWolfe/signs/issues">https://​github.com/​BenjaminWolfe/​signs/​issues</a>
 </li>
 </ul>
