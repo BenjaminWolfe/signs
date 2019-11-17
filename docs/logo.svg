@@ -18,7 +18,7 @@
    xml:space="preserve"
    sodipodi:docname="signs-hex.svg"
    inkscape:version="0.91 r13725"
-   inkscape:export-filename="C:\Users\jon.harmon\Dropbox (Personal)\R\factory\man\figures\factory.png"
+   inkscape:export-filename="/home/benjamin/signs-hex-20191116.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"><metadata
      id="metadata3871"><rdf:RDF><cc:Work
@@ -43,12 +43,14 @@
      id="namedview3867"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="136.13171"
-     inkscape:cy="503.60438"
+     inkscape:cx="143.39466"
+     inkscape:cy="474.8736"
      inkscape:window-x="57"
      inkscape:window-y="465"
      inkscape:window-maximized="1"
-     inkscape:current-layer="Layer_1" /><style
+     inkscape:current-layer="Layer_1"
+     showguides="true"
+     inkscape:guide-bbox="true" /><style
      type="text/css"
      id="style3793">
 	.st0{fill:#DB1F26;}
@@ -99,7 +101,7 @@
      style="display:inline"><ellipse
        style="fill:none;stroke:#ffffff;stroke-width:8;stroke-miterlimit:4;stroke-dasharray:none"
        id="path3412"
-       cx="349.6969"
+       cx="367.5"
        cy="359"
        rx="124"
        ry="130" /><path
@@ -107,29 +109,29 @@
        id="path3412-4"
        transform="matrix(0.99695375,0.07799497,-0.07799497,0.99695375,0,0)"
        sodipodi:type="arc"
-       sodipodi:cx="370.83652"
-       sodipodi:cy="327.07306"
+       sodipodi:cx="388.58539"
+       sodipodi:cy="325.68451"
        sodipodi:rx="99.523544"
        sodipodi:ry="109.25912"
        sodipodi:start="3.358468"
        sodipodi:end="4.5750163"
-       d="m 273.64435,303.56277 a 99.523544,109.25912 0 0 1 83.56331,-84.71952"
+       d="m 291.39323,302.17422 a 99.523544,109.25912 0 0 1 83.5633,-84.71952"
        sodipodi:open="true" /><path
        style="fill:#ffffff;fill-rule:evenodd;stroke:#ffffff;stroke-width:18.36750412;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 438.196,445.05821 101.0018,89.88358"
+       d="m 458.196,445.05821 101.0018,89.88358"
        id="path4231"
        inkscape:connector-curvature="0" /></g><text
      xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     x="276.17834"
-     y="376"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70px;line-height:125%;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="283.48145"
+     y="362"
      id="text3404"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
-       x="276.17834"
-       y="376"
+       x="283.48145"
+       y="362"
        id="tspan3408"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:45px;line-height:125%;font-family:Georgia;-inkscape-font-specification:'Georgia, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff">-5 / −5</tspan></text>
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70px;line-height:125%;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff">-5 </tspan></text>
 <text
      xml:space="preserve"
      style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -142,4 +144,28 @@
        x="215.19653"
        y="650"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:135px;line-height:125%;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff">signs</tspan></text>
+<text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90px;line-height:125%;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="347.30713"
+     y="392.07397"
+     id="text3404-3"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       x="347.30713"
+       y="392.07397"
+       id="tspan3408-7"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90px;line-height:125%;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff">/</tspan></text>
+<text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70px;line-height:125%;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="379.4364"
+     y="396.57397"
+     id="text3404-3-0"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       x="379.4364"
+       y="396.57397"
+       id="tspan3408-7-7"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70px;line-height:125%;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff">−5</tspan></text>
 </svg>
