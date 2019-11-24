@@ -38,16 +38,18 @@ test_that(
       signs_format(format = "goobers")(x),
       cat(
         "`format` should be a function that returns a character vector,",
-        "such as `as.character` or `scales::number`.",
-        "Consider setting a default with `options(signs.format=your_function)`."
+        "such as `scales::number` or even `as.character`.",
+        "Consider setting a default with",
+        "`options(signs.format = your_function)`."
       )
     )
     expect_error(
       signs_format(format = exp)(x),
       cat(
         "`format` should be a function that returns a character vector,",
-        "such as `as.character` or `scales::number`.",
-        "Consider setting a default with `options(signs.format=your_function)`."
+        "such as `scales::number` or even `as.character`.",
+        "Consider setting a default with",
+        "`options(signs.format = your_function)`."
       )
     )
     expect_error(

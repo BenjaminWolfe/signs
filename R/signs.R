@@ -78,9 +78,9 @@ signs <- function(x,
   }
   response[considered_zero] <- switch(
     label_at_zero,
-    "none"   = response[considered_zero],
-    "blank"  = "",
-    "symbol" = paste0("\u00b1", response[considered_zero])
+    none   = response[considered_zero],
+    blank  = "",
+    symbol = paste0("\u00b1", response[considered_zero])
   )
   response <- gsub("-", "\u2212", response)
 
