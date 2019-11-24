@@ -29,18 +29,19 @@ with functions like `number()`, `number_format()`,
 `comma()`, `comma_format()`, `percent()`, and `percent_format()`
 from the [`scales`](https://scales.r-lib.org/reference/number_format.html)
 package.
-The package adds 2 functions analogous to these: `signs()` and `signs_format()`.
+It simply provides two new functions to complement these:
+`signs()` and `signs_format()`.
 
 * Points in group 1 are labeled with a true Unicode minus glyph.
 * Points in group 2 are labeled with the traditional ASCII hyphen-minus.
-* Usage is identical.
+* Basic usage is identical.
 
 ```{r basics}
 theme_set(theme_gray())
 theme_update(
   panel.grid.minor = element_blank(),
-  axis.text.y = element_blank(),
-  axis.ticks.y = element_blank()
+  axis.text.y      = element_blank(),
+  axis.ticks.y     = element_blank()
 )
 
 p <- 
@@ -53,11 +54,11 @@ p <-
 label_hours <- function(mapping) {
   geom_text_repel(
     mapping,
-    nudge_x = -.1,
-    direction = "y",
-    segment.size = .4,
+    nudge_x       = -.1,
+    direction     = "y",
+    segment.size  = .4,
     segment.color = "grey75",
-    hjust = "right"
+    hjust         = "right"
   )
 }
 
@@ -74,7 +75,7 @@ p +
 
 ## Other Number Formats
 
-You can use any format with `signs::signs()``r "\u2014"`not just
+You can use any formatting function with `signs::signs()``r "\u2014"`not just
 `scales::number()`.
 Let's assume everyone gets 8 hours of sleep,
 so we can label the points as __percentages__.
@@ -115,14 +116,14 @@ and returns a character vector.
 Note that `format` and all other options (see below) come __after__ the dots;
 this way you can enjoy the same matching by position
 you know from `scales`.
-For example, if you prefer the simplicity of `number(x, .1)`,
-you can use `signs(x, .1)`.
+For example, if you prefer the simplicity of `number(x, 1)`,
+you can simply use `signs(x, 1)`.
 
 ```{r matching-by-position}
 x <- seq(-4, 4)
 
-number(x, .1) # first argument is accuracy
-signs(x, .1) # first argument is accuracy
+number(x, 1) # first argument is accuracy
+signs(x, 1)  # first argument is accuracy
 ```
 
 ## Other Arguments
@@ -137,7 +138,7 @@ signs(x, .1) # first argument is accuracy
 
 Sometimes, as with this dataset,
 you want to show __change from a baseline__.
-You might not only want to include a `r "\u2212"` in front or negative numbers,
+You might not only want to include a `r "\u2212"` in front of negative numbers,
 but a + in front of positive numbers as well.
 This is as simple as `add_plusses = TRUE`.
 
@@ -153,7 +154,7 @@ p +
   )
 ```
 
-If all values are on the interval (-1, 1),
+If all values are on the interval (`r "\u2212"`1, 1),
 it can be more compact to remove leading zeros.
 Do this with `trim_leading_zeros = TRUE`:
 
@@ -178,10 +179,10 @@ p +
 ## Axis Labels
 
 You can also use Unicode minus signs on an entire axis.
-The function is called `signs::signs_format()`,
+This function is called `signs::signs_format()`,
 by analogy to `scales::number_format()`, `scales::percent_format()`,
 and the rest of the `_format()` functions.
-Note that it accepts all the same optional arguments as `signs::signs()`.
+Note that it accepts the same optional arguments as `signs::signs()` as well.
 
 ```{r axis-labels}
 theme_update(
@@ -193,8 +194,8 @@ p +
     limits = c(-.8, .8),
     breaks = seq(-.8, .8, by = .2),
     labels = signs_format(
-      accuracy = .1,
-      add_plusses = TRUE,
+      accuracy           = .1,
+      add_plusses        = TRUE,
       trim_leading_zeros = TRUE
     )
   ) +
@@ -203,8 +204,8 @@ p +
       label = case_when(
         group == 1 ~ signs(
           extra,
-          accuracy = .1,
-          add_plusses = TRUE,
+          accuracy           = .1,
+          add_plusses        = TRUE,
           trim_leading_zeros = TRUE
         ),
         group == 2 ~ number(extra, accuracy = .1)
@@ -214,7 +215,7 @@ p +
 ```
 
 You may want to treat zero itself differently,
-particularly when every other number has either a plus or a minus.
+particularly when every other value has either a plus or a minus.
 Maybe you'll be extra pedantic about it with `label_at_zero = "symbol"`
 (notice the y-axis labels below, not the data point labels):
 
@@ -277,10 +278,10 @@ globally for a script with `options()`:
 
 ```{r setting-options-globally}
 options(
-  signs.format = scales::number,
-  signs.add.plusses = TRUE,
+  signs.format             = scales::number,
+  signs.add.plusses        = TRUE,
   signs.trim.leading.zeros = TRUE,
-  signs.label.at.zero = "none"
+  signs.label.at.zero      = "none"
 )
 
 p +

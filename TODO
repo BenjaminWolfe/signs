@@ -1,4 +1,1 @@
-# Handle check results. Log this & other issues w/ Jon Harmon's factory package.
-# Decide whether to keep the `options` functionality or simplify.
-# Decide whether I really like my argument names or want to tweak them a little.
-# Submit to CRAN!
+# Consider https://github.com/jonthegeek/factory/issues/16

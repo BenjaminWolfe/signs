@@ -12,32 +12,39 @@ coverage](https://codecov.io/gh/BenjaminWolfe/signs/branch/master/graph/badge.sv
 <!-- badges: end -->
 
 `signs` makes it easy to use typographically accurate minus signs in
-plots, markdown, dashboards, or other displays.
+plots, markdown, dashboards, or other forms of display.
 
 Ask any typography nut, and they can walk you through the differences
-among 4 glyphs that look almost alike:
+among 4 symbols that look nearly identical:
 
-  - the hyphen-minus (-, ASCII 45)
-  - the en-dash (–, Unicode 2013)
-  - the em-dash (—, Unicode 2014)
+  - the hyphen-minus (-, ASCII 45, next to the zero key)
+  - the en-dash (–, Unicode 2013, Windows Alt Code 0151)
+  - the em-dash (—, Unicode 2014, Windows Alt Code 0150)
   - the true minus (−, Unicode 2212)
 
-In most fixed-width coding fonts, these are nearly (if not totally)
-indistinguishable. But a good font for plotting or reports will usually
-have a different glyph for each. The true minus takes up more space than
-the hyphen-minus (generally the width of a digit), and it often sits a
-little higher.
+The true minus, when a typeface has one, is *designed for mathematics*.
+It has the same length and line thickness as the crossbar of the plus,
+and it sits at the same height above the baseline. By comparison, the
+hyphen-minus is quite a bit shorter and sits lower. Hyphens were
+designed, not for mathematics, but for joining words. Surprisingly
+enough, there is no Windows Alt Code for true minuses.
 
 For me, using a Unicode minus is like brewing high-end tea or wearing my
 favorite socks. Maybe nobody else notices, but it still looks good to
-me. If you, similarly, enjoy the little things, this package may grow on
+me. If you like me enjoy the little things, this package may grow on
 you\!
 
 ## Installation
 
-`signs` is not yet available on [CRAN](https://CRAN.R-project.org). You
-can install it from [GitHub](https://github.com/BenjaminWolfe/signs)
-with:
+You can install `signs` from
+[CRAN](https://cran.r-project.org/package=signs),
+
+``` r
+install.packages("signs")
+```
+
+or grab the dev version from
+[GitHub](https://github.com/BenjaminWolfe/signs):
 
 ``` r
 # install.packages("devtools")
@@ -49,25 +56,30 @@ devtools::install_github("BenjaminWolfe/signs")
 Using `signs` is simple, especially if you’re familiar with functions
 like `scales::number()`, `scales::number_format()`, `scales::comma()`,
 `scales::comma_format()`, `scales::percent()`, and
-`scales::percent_format()`.
+`scales::percent_format()`. It simply provides two new functions to
+complement these: `signs::signs()` and `signs::signs_format()`.
 
 See `vignette("signs")` for a full tour of the package.
 
 ### Fixed-Width Fonts (indistinguishable)
 
-As mentioned above, the difference is hard to see with a fixed-width
-typeface. That’s not a problem with the package; it’s just how these
-fonts work.
+The difference between minuses is impossible to see with most coding
+typefaces. That’s not a problem with the package; it’s just how
+fixed-width fonts work. (How ugly would your code look if characters had
+different widths?)
 
 ``` r
 library(scales)
 library(signs)
 
 x <- seq(-4, 4)
-number(x)
+
+# hyphen-minuses
+number(x, accuracy = 1)
 #> [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"
 
-signs(x)
+# true minuses
+signs(x, accuracy = 1)
 #> [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"
 ```
 
@@ -79,7 +91,7 @@ We can see the difference in a plot.
     `signs()`. So is the y-axis: `signs_format()`.
   - Points in group 2 are labeled with the traditional ASCII
     hyphen-minus: `scales::number()`.
-  - Usage is identical.
+  - Basic usage is identical.
 
 <!-- end list -->
 
@@ -101,11 +113,11 @@ p <-
 label_hours <- function(mapping) {
   geom_text_repel(
     mapping,
-    nudge_x = -.1,
-    direction = "y",
-    segment.size = .4,
+    nudge_x       = -.1,
+    direction     = "y",
+    segment.size  = .4,
     segment.color = "grey75",
-    hjust = "right"
+    hjust         = "right"
   )
 }
 
