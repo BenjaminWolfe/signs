@@ -8,7 +8,7 @@ Authors@R:
            email = "benjamin.e.wolfe@gmail.com",
            comment = c(ORCID = "0000-0002-4339-9328"))
 Description: Provides convenience functions to replace hyphen-minuses (ASCII 45)
-    with proper minus signs (Unicode character 2212). The true minus complements
+    with proper minus signs (Unicode character 2212). The true minus matches
     the plus symbol in width, line thickness, and height above the baseline.
     It was designed for mathematics and looks better in presentation.
 URL: https://benjaminwolfe.github.io/signs
