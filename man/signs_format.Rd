@@ -4,10 +4,13 @@
 \alias{signs_format}
 \title{A function factory to add proper minus signs}
 \usage{
-signs_format(..., format = getOption("signs.format"),
-  add_plusses = getOption("signs.add.plusses"),
-  trim_leading_zeros = getOption("signs.trim.leading.zeros"),
-  label_at_zero = getOption("signs.label.at.zero"))
+signs_format(
+  ...,
+  format = getOption("signs.format", scales::number),
+  add_plusses = getOption("signs.add.plusses", FALSE),
+  trim_leading_zeros = getOption("signs.trim.leading.zeros", FALSE),
+  label_at_zero = getOption("signs.label.at.zero", "none")
+)
 }
 \arguments{
 \item{...}{Other arguments passed on to \code{format}.}

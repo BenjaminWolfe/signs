@@ -4,10 +4,14 @@
 \alias{signs}
 \title{Add proper minus signs}
 \usage{
-signs(x, ..., format = getOption("signs.format"),
-  add_plusses = getOption("signs.add.plusses"),
-  trim_leading_zeros = getOption("signs.trim.leading.zeros"),
-  label_at_zero = getOption("signs.label.at.zero"))
+signs(
+  x,
+  ...,
+  format = getOption("signs.format", scales::number),
+  add_plusses = getOption("signs.add.plusses", FALSE),
+  trim_leading_zeros = getOption("signs.trim.leading.zeros", FALSE),
+  label_at_zero = getOption("signs.label.at.zero", "none")
+)
 }
 \arguments{
 \item{x}{Numeric vector.}

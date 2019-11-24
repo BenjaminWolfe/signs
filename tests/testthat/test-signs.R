@@ -32,28 +32,6 @@ test_that(
 )
 
 test_that(
-  "function still works when options aren't set",
-  {
-    expect_equal(
-      signs(x, accuracy = 1, format = NULL),
-      c("\u22121", "0", "1")
-    )
-    expect_equal(
-      signs(x, accuracy = 1, add_plusses = NULL),
-      c("\u22121", "0", "1")
-    )
-    expect_equal(
-      signs(x, accuracy = 1, trim_leading_zeros = NULL),
-      c("\u22121", "0", "1")
-    )
-    expect_equal(
-      signs(x, accuracy = 1, label_at_zero = NULL),
-      c("\u22121", "0", "1")
-    )
-  }
-)
-
-test_that(
   "errors work",
   {
     expect_error(
