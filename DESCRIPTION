@@ -1,6 +1,6 @@
 Package: signs
 Title: Insert Proper Minus Signs
-Version: 0.1.1
+Version: 0.1.1.9000
 Authors@R: 
     person(given = c("Benjamin", "E."),
            family = "Wolfe",

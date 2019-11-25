@@ -1,4 +1,6 @@
-# signs 0.1.1
+# signs (development version)
+
+# signs 0.1.1 (released 2019-11-25)
 
 * Fixed [issue #2](https://github.com/BenjaminWolfe/signs/issues/2);
   tests had assumed a default accuracy of 1,
