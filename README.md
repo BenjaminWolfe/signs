@@ -18,22 +18,22 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www
 <!-- badges: end -->
 
 `signs` makes it easy to use typographically accurate minus signs in
-plots, markdown, dashboards, or other forms of display.
+plots, markdown, dashboards, or other presentations.
 
 Ask any typography nut, and they can walk you through the differences
 among 4 symbols that look nearly identical:
 
   - the hyphen-minus (-, ASCII 45, next to the zero key)
-  - the en-dash (–, Unicode 2013, Windows Alt Code 0151)
-  - the em-dash (—, Unicode 2014, Windows Alt Code 0150)
+  - the en-dash (–, Unicode 2013, Alt+0151 on Windows)
+  - the em-dash (—, Unicode 2014, Alt+0150 on Windows)
   - the true minus (−, Unicode 2212)
 
 The true minus, when a typeface has one, is *designed for mathematics*.
 It has the same length and line thickness as the crossbar of the plus
 sign, and it sits at the same height above the baseline. By comparison,
 the hyphen-minus is quite a bit shorter and sits lower. Hyphens were
-designed, not for mathematics, but for joining words. Surprisingly
-enough, there is no Windows Alt Code for true minuses.
+designed, not for mathematics, but primarily for joining words. Oddly
+there is no shortcut for true minuses on Windows.
 
 For me, using a Unicode minus is like brewing high-end tea or wearing my
 favorite socks. Maybe nobody else notices, but it still looks good to
