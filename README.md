@@ -9,6 +9,10 @@
 status](https://travis-ci.org/BenjaminWolfe/signs.svg?branch=master)](https://travis-ci.org/BenjaminWolfe/signs)
 [![Codecov test
 coverage](https://codecov.io/gh/BenjaminWolfe/signs/branch/master/graph/badge.svg)](https://codecov.io/gh/BenjaminWolfe/signs?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/signs)](https://CRAN.R-project.org/package=signs)
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
 `signs` makes it easy to use typographically accurate minus signs in
