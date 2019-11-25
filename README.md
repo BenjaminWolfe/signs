@@ -29,9 +29,9 @@ among 4 symbols that look nearly identical:
   - the true minus (−, Unicode 2212)
 
 The true minus, when a typeface has one, is *designed for mathematics*.
-It has the same length and line thickness as the crossbar of the plus,
-and it sits at the same height above the baseline. By comparison, the
-hyphen-minus is quite a bit shorter and sits lower. Hyphens were
+It has the same length and line thickness as the crossbar of the plus
+sign, and it sits at the same height above the baseline. By comparison,
+the hyphen-minus is quite a bit shorter and sits lower. Hyphens were
 designed, not for mathematics, but for joining words. Surprisingly
 enough, there is no Windows Alt Code for true minuses.
 
