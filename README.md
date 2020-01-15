@@ -32,8 +32,17 @@ The true minus, when a typeface has one, is *designed for mathematics*.
 It has the same length and line thickness as the crossbar of the plus
 sign, and it sits at the same height above the baseline. By comparison,
 the hyphen-minus is quite a bit shorter and sits lower. Hyphens were
-designed, not for mathematics, but primarily for joining words. Oddly
-there is no shortcut for true minuses on Windows.
+designed, not for mathematics, but primarily for joining words.
+
+Oddly there is no shortcut for true minuses on Windows. There are a [few
+options on Mac](https://apple.stackexchange.com/q/39448/359228), and of
+course [major Linux distros like Ubuntu support entering
+Unicode](https://askubuntu.com/a/31283). Fixed-width coding fonts that
+are intended for coding, such as
+[FiraCode](https://github.com/tonsky/FiraCode), use ligatures to mimic
+the minus glyph. But the Unicode minus will work with whatever
+presentation font you prefer, and it has the advantage of being
+understood properly by most screen readers.
 
 For me, using a Unicode minus is like brewing high-end tea or wearing my
 favorite socks. Maybe nobody else notices, but it still looks good to
@@ -86,7 +95,7 @@ number(x, accuracy = 1)
 
 # true minuses
 signs(x, accuracy = 1)
-#> [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"
+#> [1] "−4" "−3" "−2" "−1" "0"  "1"  "2"  "3"  "4"
 ```
 
 ### Plots (distinguishable)
@@ -144,3 +153,12 @@ p +
 ```
 
 <img src="man/figures/README-plots-1.png" width="100%" />
+
+### Credits
+
+  - Thanks to Jon Harmon (@JonTheGeek on
+    [Twitter](https://twitter.com/JonTheGeek) and
+    [GitHub](https://github.com/jonthegeek)) for the insight on screen
+    readers\!
+  - Thanks to my dad Matthew E. Wolfe for the crisp summary of Unicode
+    2212’s design advantages vis-a-vis the plus sign.

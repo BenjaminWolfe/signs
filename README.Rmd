@@ -40,7 +40,14 @@ It has the same length and line thickness as the crossbar of the plus sign,
 and it sits at the same height above the baseline.
 By comparison, the hyphen-minus is quite a bit shorter and sits lower.
 Hyphens were designed, not for mathematics, but primarily for joining words.
+
 Oddly there is no shortcut for true minuses on Windows.
+There are a [few options on Mac][1],
+and of course [major Linux distros like Ubuntu support entering Unicode][2].
+Fixed-width coding fonts that are intended for coding, such as [FiraCode][3],
+use ligatures to mimic the minus glyph.
+But the Unicode minus will work with whatever presentation font you prefer,
+and it has the advantage of being understood properly by most screen readers.
 
 For me, using a Unicode minus is like brewing high-end tea
 or wearing my favorite socks.
@@ -50,13 +57,13 @@ this package may grow on you!
 
 ## Installation
 
-You can install `signs` from [CRAN](https://cran.r-project.org/package=signs),
+You can install `signs` from [CRAN][4],
 
 ``` r
 install.packages("signs")
 ```
 
-or grab the dev version from [GitHub](https://github.com/BenjaminWolfe/signs):
+or grab the dev version from [GitHub][5]:
 
 ``` r
 # install.packages("devtools")
@@ -145,3 +152,18 @@ p +
     labels = signs_format(accuracy = .1) # Unicode, analogous to number_format() 
   )
 ```
+
+### Credits
+
+* Thanks to Jon Harmon (@JonTheGeek on [Twitter][6] and [GitHub][7])
+  for the insight on screen readers!
+* Thanks to my dad Matthew E. Wolfe for the crisp summary
+  of Unicode 2212's design advantages vis-a-vis the plus sign.
+
+[1]: https://apple.stackexchange.com/q/39448/359228
+[2]: https://askubuntu.com/a/31283
+[3]: https://github.com/tonsky/FiraCode
+[4]: https://cran.r-project.org/package=signs
+[5]: https://github.com/BenjaminWolfe/signs
+[6]: https://twitter.com/JonTheGeek
+[7]: https://github.com/jonthegeek

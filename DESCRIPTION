@@ -1,6 +1,6 @@
 Package: signs
 Title: Insert Proper Minus Signs
-Version: 0.1.1.9000
+Version: 0.1.2
 Authors@R: 
     person(given = c("Benjamin", "E."),
            family = "Wolfe",
@@ -10,7 +10,8 @@ Authors@R:
 Description: Provides convenience functions to replace hyphen-minuses (ASCII 45)
     with proper minus signs (Unicode character 2212). The true minus matches
     the plus symbol in width, line thickness, and height above the baseline.
-    It was designed for mathematics and looks better in presentation.
+    It was designed for mathematics, looks better in presentation,
+    and is understood properly by screen readers.
 URL: https://benjaminwolfe.github.io/signs
 BugReports: https://github.com/BenjaminWolfe/signs/issues
 License: MIT + file LICENSE
