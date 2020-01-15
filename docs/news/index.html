@@ -6,15 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Authors • signs</title>
+<title>Changelog • signs</title>
 
 <!-- favicons -->
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,13 +36,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="Authors" />
+<meta property="og:title" content="Changelog" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -63,7 +63,7 @@
   </head>
 
   <body>
-    <div class="container template-authors">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -75,7 +75,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">signs</a>
+        <a class="navbar-link" href="../index.html">signs</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
@@ -83,19 +83,19 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="articles/signs.html">Get started</a>
+  <a href="../articles/signs.html">Get started</a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="news/index.html">Changelog</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -111,22 +111,53 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Authors</h1>
+      <h1>Changelog <small></small></h1>
+      
     </div>
 
-    <ul class="list-unstyled">
-      <li>
-        <p><strong>Benjamin E. Wolfe</strong>. Author, maintainer. <a href='https://orcid.org/0000-0002-4339-9328' target='orcid.widget'><img src='https://members.orcid.org/sites/default/files/vector_iD_icon.svg' class='orcid' alt='ORCID'></a>
-        </p>
-      </li>
-    </ul>
+    <div id="signs-0-1-2-submitted-2020-01-15" class="section level1">
+<h1 class="page-header">
+<a href="#signs-0-1-2-submitted-2020-01-15" class="anchor"></a>signs 0.1.2 (submitted 2020-01-15)<small> Unreleased </small>
+</h1>
+<ul>
+<li>Fixed issue where <code>signs_format</code> would not work if package was not loaded.</li>
+</ul>
+</div>
+    <div id="signs-0-1-1-released-2019-11-25" class="section level1">
+<h1 class="page-header">
+<a href="#signs-0-1-1-released-2019-11-25" class="anchor"></a>signs 0.1.1 (released 2019-11-25)<small> 2019-11-25 </small>
+</h1>
+<ul>
+<li>Fixed <a href="https://github.com/BenjaminWolfe/signs/issues/2">issue #2</a>; tests had assumed a default accuracy of 1, and <a href="https://github.com/r-lib/scales/issues/229"><code>scales 1.1.0</code></a> changed default to .1.</li>
+<li>In the unlikely event a user explicitly sets <code>format</code>, <code>add_plusses</code>, <code>trim_leading_zeros</code>, or <code>label_at_zero</code> to <code>NULL</code>, functions will now throw an error.</li>
+<li>Improved intro / summary language and updated hex logo with enlarged font.</li>
+</ul>
+</div>
+    <div id="signs-0-1-0-released-2019-10-01" class="section level1">
+<h1 class="page-header">
+<a href="#signs-0-1-0-released-2019-10-01" class="anchor"></a>signs 0.1.0 (released 2019-10-01)<small> 2019-10-01 </small>
+</h1>
+<ul>
+<li>
+<code>signs</code> is on CRAN!</li>
+</ul>
+</div>
+  </div>
 
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="#signs-0-1-2-submitted-2020-01-15">0.1.2</a></li>
+        <li><a href="#signs-0-1-1-released-2019-11-25">0.1.1</a></li>
+        <li><a href="#signs-0-1-0-released-2019-10-01">0.1.0</a></li>
+      </ul>
+    </div>
   </div>
 
 </div>
-
 
 
       <footer>

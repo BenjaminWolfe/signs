@@ -18,8 +18,10 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Insert Proper Minus Signs">
 <meta property="og:description" content="Provides convenience functions to replace hyphen-minuses (ASCII 45)
-    with proper minus signs (Unicode character 2212). The minus sign is wider
-    and slightly nicer for display than the hyphen-minus we use for computation.">
+    with proper minus signs (Unicode character 2212). The true minus matches
+    the plus symbol in width, line thickness, and height above the baseline.
+    It was designed for mathematics, looks better in presentation,
+    and is understood properly by screen readers.">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -40,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">signs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -58,6 +60,9 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
 </div>
@@ -71,47 +76,53 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="signs-" class="section level1">
+<div id="signs" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#signs-" class="anchor"></a>signs <a href="https://benjaminwolfe.github.io/signs/"><img src="reference/figures/logo.svg" align="right" height="139"></a>
+<a href="#signs" class="anchor"></a>signs <a href="https://benjaminwolfe.github.io/signs/"><img src="reference/figures/logo.svg" align="right" height="139"></a>
 </h1></div>
 <!-- badges: start -->
 
-<p><code>signs</code> makes it easy to use typographically accurate minus signs in plots, markdown, dashboards, or other displays.</p>
-<p>Ask any typography nut, and they can walk you through the differences among 4 glyphs that look almost alike:</p>
+<p><code>signs</code> makes it easy to use typographically accurate minus signs in plots, markdown, dashboards, or other presentations.</p>
+<p>Ask any typography nut, and they can walk you through the differences among 4 symbols that look nearly identical:</p>
 <ul>
-<li>the hyphen-minus (-, ASCII 45)</li>
-<li>the en-dash (–, Unicode 2013)</li>
-<li>the em-dash (—, Unicode 2014)</li>
+<li>the hyphen-minus (-, ASCII 45, next to the zero key)</li>
+<li>the en-dash (–, Unicode 2013, Alt+0151 on Windows)</li>
+<li>the em-dash (—, Unicode 2014, Alt+0150 on Windows)</li>
 <li>the true minus (−, Unicode 2212)</li>
 </ul>
-<p>In most fixed-width coding fonts, these are nearly (if not totally) indistinguishable. But a good font for plotting or reports will usually have a different glyph for each. The true minus takes up more space than the hyphen-minus (generally the width of a digit), and it often sits a little higher.</p>
-<p>For me, using a Unicode minus is like brewing high-end tea or wearing my favorite socks. Maybe nobody else notices, but it still looks good to me. If you, similarly, enjoy the little things, this package may grow on you!</p>
+<p>The true minus, when a typeface has one, is <em>designed for mathematics</em>. It has the same length and line thickness as the crossbar of the plus sign, and it sits at the same height above the baseline. By comparison, the hyphen-minus is quite a bit shorter and sits lower. Hyphens were designed, not for mathematics, but primarily for joining words.</p>
+<p>Oddly there is no shortcut for true minuses on Windows. There are a <a href="https://apple.stackexchange.com/q/39448/359228">few options on Mac</a>, and of course <a href="https://askubuntu.com/a/31283">major Linux distros like Ubuntu support entering Unicode</a>. Fixed-width coding fonts that are intended for coding, such as <a href="https://github.com/tonsky/FiraCode">FiraCode</a>, use ligatures to mimic the minus glyph. But the Unicode minus will work with whatever presentation font you prefer, and it has the advantage of being understood properly by most screen readers.</p>
+<p>For me, using a Unicode minus is like brewing high-end tea or wearing my favorite socks. Maybe nobody else notices, but it still looks good to me. If you like me enjoy the little things, this package may grow on you!</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p><code>signs</code> is not yet available on <a href="https://CRAN.R-project.org">CRAN</a>. You can install it from <a href="https://github.com/BenjaminWolfe/signs">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"BenjaminWolfe/signs"</span>)</a></code></pre></div>
+<p>You can install <code>signs</code> from <a href="https://cran.r-project.org/package=signs">CRAN</a>,</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"signs"</span>)</a></code></pre></div>
+<p>or grab the dev version from <a href="https://github.com/BenjaminWolfe/signs">GitHub</a>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"BenjaminWolfe/signs"</span>)</a></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<p>Using <code>signs</code> is simple, especially if you’re familiar with functions like <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::number()</a></code>, <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::number_format()</a></code>, <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::comma()</a></code>, <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::comma_format()</a></code>, <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::percent()</a></code>, and <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::percent_format()</a></code>.</p>
+<p>Using <code>signs</code> is simple, especially if you’re familiar with functions like <code><a href="https://scales.r-lib.org//reference/number.html">scales::number()</a></code>, <code><a href="https://scales.r-lib.org//reference/label_number.html">scales::number_format()</a></code>, <code><a href="https://scales.r-lib.org//reference/label_number.html">scales::comma()</a></code>, <code><a href="https://scales.r-lib.org//reference/label_number.html">scales::comma_format()</a></code>, <code><a href="https://scales.r-lib.org//reference/label_percent.html">scales::percent()</a></code>, and <code><a href="https://scales.r-lib.org//reference/label_percent.html">scales::percent_format()</a></code>. It simply provides two new functions to complement these: <code><a href="reference/signs.html">signs::signs()</a></code> and <code><a href="reference/signs_format.html">signs::signs_format()</a></code>.</p>
 <p>See <code><a href="articles/signs.html">vignette("signs")</a></code> for a full tour of the package.</p>
 <div id="fixed-width-fonts-indistinguishable" class="section level3">
 <h3 class="hasAnchor">
 <a href="#fixed-width-fonts-indistinguishable" class="anchor"></a>Fixed-Width Fonts (indistinguishable)</h3>
-<p>As mentioned above, the difference is hard to see with a fixed-width typeface. That’s not a problem with the package; it’s just how these fonts work.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(scales)</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(signs)</a>
-<a class="sourceLine" id="cb2-3" title="3"></a>
-<a class="sourceLine" id="cb2-4" title="4">x &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="kw">number</span>(x)</a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt; [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"</span></a>
-<a class="sourceLine" id="cb2-7" title="7"></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="kw"><a href="reference/signs.html">signs</a></span>(x)</a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt; [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"</span></a></code></pre></div>
+<p>The difference between minuses is impossible to see with most coding typefaces. That’s not a problem with the package; it’s just how fixed-width fonts work. (How ugly would your code look if characters had different widths?)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(scales)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(signs)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">x &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co"># hyphen-minuses</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw"><a href="https://scales.r-lib.org//reference/number.html">number</a></span>(x, <span class="dt">accuracy =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; [1] "-4" "-3" "-2" "-1" "0"  "1"  "2"  "3"  "4"</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co"># true minuses</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="kw"><a href="reference/signs.html">signs</a></span>(x, <span class="dt">accuracy =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; [1] "−4" "−3" "−2" "−1" "0"  "1"  "2"  "3"  "4"</span></a></code></pre></div>
 </div>
 <div id="plots-distinguishable" class="section level3">
 <h3 class="hasAnchor">
@@ -119,49 +130,57 @@
 <p>We can see the difference in a plot.</p>
 <ul>
 <li>Points in group 1 are labeled with a true Unicode minus glyph: <code><a href="reference/signs.html">signs()</a></code>. So is the y-axis: <code><a href="reference/signs_format.html">signs_format()</a></code>.</li>
-<li>Points in group 2 are labeled with the traditional ASCII hyphen-minus: <code><a href="https://scales.r-lib.org//reference/number_format.html">scales::number()</a></code>.</li>
-<li>Usage is identical.</li>
+<li>Points in group 2 are labeled with the traditional ASCII hyphen-minus: <code><a href="https://scales.r-lib.org//reference/number.html">scales::number()</a></code>.</li>
+<li>Basic usage is identical.</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggrepel)</a>
-<a class="sourceLine" id="cb3-4" title="4"></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="kw">theme_set</span>(<span class="kw">theme_gray</span>())</a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="kw">theme_update</span>(<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())</a>
-<a class="sourceLine" id="cb3-7" title="7"></a>
-<a class="sourceLine" id="cb3-8" title="8">p &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="st">  </span><span class="kw">ggplot</span>(sleep) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-10" title="10"><span class="st">  </span><span class="kw">aes</span>(group, extra) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-12" title="12"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"Drug"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-13" title="13"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"Extra Sleep (hours)"</span>)</a>
-<a class="sourceLine" id="cb3-14" title="14"></a>
-<a class="sourceLine" id="cb3-15" title="15">label_hours &lt;-<span class="st"> </span><span class="cf">function</span>(mapping) {</a>
-<a class="sourceLine" id="cb3-16" title="16">  <span class="kw">geom_text_repel</span>(</a>
-<a class="sourceLine" id="cb3-17" title="17">    mapping,</a>
-<a class="sourceLine" id="cb3-18" title="18">    <span class="dt">nudge_x =</span> <span class="fl">-.1</span>,</a>
-<a class="sourceLine" id="cb3-19" title="19">    <span class="dt">direction =</span> <span class="st">"y"</span>,</a>
-<a class="sourceLine" id="cb3-20" title="20">    <span class="dt">segment.size =</span> <span class="fl">.4</span>,</a>
-<a class="sourceLine" id="cb3-21" title="21">    <span class="dt">segment.color =</span> <span class="st">"grey75"</span>,</a>
-<a class="sourceLine" id="cb3-22" title="22">    <span class="dt">hjust =</span> <span class="st">"right"</span></a>
-<a class="sourceLine" id="cb3-23" title="23">  )</a>
-<a class="sourceLine" id="cb3-24" title="24">}</a>
-<a class="sourceLine" id="cb3-25" title="25"></a>
-<a class="sourceLine" id="cb3-26" title="26">p <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-27" title="27"><span class="st">  </span><span class="kw">label_hours</span>(</a>
-<a class="sourceLine" id="cb3-28" title="28">    <span class="dt">mapping =</span> <span class="kw">aes</span>(</a>
-<a class="sourceLine" id="cb3-29" title="29">      <span class="dt">label =</span> <span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb3-30" title="30">        group <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> </span><span class="kw"><a href="reference/signs.html">signs</a></span>(extra, <span class="dt">accuracy =</span> <span class="fl">.1</span>), <span class="co"># Unicode minuses</span></a>
-<a class="sourceLine" id="cb3-31" title="31">        group <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> </span><span class="kw">number</span>(extra, <span class="dt">accuracy =</span> <span class="fl">.1</span>) <span class="co"># ASCII minuses</span></a>
-<a class="sourceLine" id="cb3-32" title="32">      )</a>
-<a class="sourceLine" id="cb3-33" title="33">    )</a>
-<a class="sourceLine" id="cb3-34" title="34">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-35" title="35"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
-<a class="sourceLine" id="cb3-36" title="36">    <span class="dt">limits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb3-37" title="37">    <span class="dt">breaks =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb3-38" title="38">    <span class="dt">labels =</span> <span class="kw"><a href="reference/signs_format.html">signs_format</a></span>(<span class="dt">accuracy =</span> <span class="fl">.1</span>) <span class="co"># Unicode, analogous to number_format() </span></a>
-<a class="sourceLine" id="cb3-39" title="39">  )</a></code></pre></div>
+<!-- end list --><div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggrepel)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_gray</a></span>())</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_update</a></span>(<span class="dt">panel.grid.minor =</span> <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>())</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">p &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(sleep) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(group, extra) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"Drug"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Extra Sleep (hours)"</span>)</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">label_hours &lt;-<span class="st"> </span><span class="cf">function</span>(mapping) {</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">  <span class="kw"><a href="https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html">geom_text_repel</a></span>(</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">    mapping,</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">    <span class="dt">nudge_x       =</span> <span class="fl">-.1</span>,</a>
+<a class="sourceLine" id="cb4-19" data-line-number="19">    <span class="dt">direction     =</span> <span class="st">"y"</span>,</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">    <span class="dt">segment.size  =</span> <span class="fl">.4</span>,</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21">    <span class="dt">segment.color =</span> <span class="st">"grey75"</span>,</a>
+<a class="sourceLine" id="cb4-22" data-line-number="22">    <span class="dt">hjust         =</span> <span class="st">"right"</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23">  )</a>
+<a class="sourceLine" id="cb4-24" data-line-number="24">}</a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26">p <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="st">  </span><span class="kw">label_hours</span>(</a>
+<a class="sourceLine" id="cb4-28" data-line-number="28">    <span class="dt">mapping =</span> <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(</a>
+<a class="sourceLine" id="cb4-29" data-line-number="29">      <span class="dt">label =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span>(</a>
+<a class="sourceLine" id="cb4-30" data-line-number="30">        group <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> </span><span class="kw"><a href="reference/signs.html">signs</a></span>(extra, <span class="dt">accuracy =</span> <span class="fl">.1</span>), <span class="co"># Unicode minuses</span></a>
+<a class="sourceLine" id="cb4-31" data-line-number="31">        group <span class="op">==</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> </span><span class="kw"><a href="https://scales.r-lib.org//reference/number.html">number</a></span>(extra, <span class="dt">accuracy =</span> <span class="fl">.1</span>) <span class="co"># ASCII minuses</span></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32">      )</a>
+<a class="sourceLine" id="cb4-33" data-line-number="33">    )</a>
+<a class="sourceLine" id="cb4-34" data-line-number="34">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-35" data-line-number="35"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(</a>
+<a class="sourceLine" id="cb4-36" data-line-number="36">    <span class="dt">limits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb4-37" data-line-number="37">    <span class="dt">breaks =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb4-38" data-line-number="38">    <span class="dt">labels =</span> <span class="kw"><a href="reference/signs_format.html">signs_format</a></span>(<span class="dt">accuracy =</span> <span class="fl">.1</span>) <span class="co"># Unicode, analogous to number_format() </span></a>
+<a class="sourceLine" id="cb4-39" data-line-number="39">  )</a></code></pre></div>
 <p><img src="reference/figures/README-plots-1.png" width="100%"></p>
+</div>
+<div id="credits" class="section level3">
+<h3 class="hasAnchor">
+<a href="#credits" class="anchor"></a>Credits</h3>
+<ul>
+<li>Thanks to Jon Harmon (@JonTheGeek on <a href="https://twitter.com/JonTheGeek">Twitter</a> and <a href="https://github.com/jonthegeek">GitHub</a>) for the insight on screen readers!</li>
+<li>Thanks to my dad Matthew E. Wolfe for the crisp summary of Unicode 2212’s design advantages vis-a-vis the plus sign.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -196,7 +215,10 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/BenjaminWolfe/signs"><img src="https://travis-ci.org/BenjaminWolfe/signs.svg?branch=master" alt="Travis build status"></a></li>
+<li><a href="https://ci.appveyor.com/project/BenjaminWolfe/signs"><img src="https://ci.appveyor.com/api/projects/status/github/BenjaminWolfe/signs?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
 <li><a href="https://codecov.io/gh/BenjaminWolfe/signs?branch=master"><img src="https://codecov.io/gh/BenjaminWolfe/signs/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://CRAN.R-project.org/package=signs"><img src="https://www.r-pkg.org/badges/version/signs" alt="CRAN status"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
 </ul>
 </div>
 </div>
