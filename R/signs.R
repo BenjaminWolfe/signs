@@ -154,12 +154,12 @@ signs_format <-
   rlang::new_function(
     as.pairlist(alist(x = )),
     rlang::expr({
-      signs(x                  = x,
-            !!!dots,
-            format             = !!format,
-            add_plusses        = !!add_plusses,
-            trim_leading_zeros = !!trim_leading_zeros,
-            label_at_zero      = !!label_at_zero)
+      signs::signs(x                  = x,
+                   !!!dots,
+                   format             = !!format,
+                   add_plusses        = !!add_plusses,
+                   trim_leading_zeros = !!trim_leading_zeros,
+                   label_at_zero      = !!label_at_zero)
       }),
     rlang::caller_env()
   )
